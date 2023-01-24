@@ -1,0 +1,40 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>salle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <div class="image">
+      <img src="../assets/IMAGE/ok.png" alt="" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Liste des salles </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let salle of mesSalles">
+      <ion-thumbnail slot="start">
+        <img src="{{salle.image}}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{salle.nom}}</h2>
+        <p>{{salle.description}}</p>
+        <p>Nombre de place: {{salle.nombreplace}}</p>
+        <p>Etage: {{salle.etage}}</p>
+        <p>Numero: {{salle.numero}}</p>
+        <p>Disponibilité: {{salle.disponibilite}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list></ion-content
+>
