@@ -1,0 +1,7 @@
+{
+  "name": "interface-OdcEvents",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
