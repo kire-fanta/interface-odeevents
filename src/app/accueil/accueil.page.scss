@@ -15,22 +15,29 @@
 // }
 
 ion-segment-button {
-  --color: white;
-  font-size: 10%;
+  --color: black;
+  font-size: 50%;
 }
 //  ion-segment-button:active{
 //   --color: rgb(216, 20, 170);
 // }
-image {
-  height: 90%;
-  width: 60%;
-  --text-align: center;
-  --align-items: center;
-  margin-left: 20%;
+// image {
+//   height: 90%;
+//   width: 60%;
+//   --text-align: center;
+//   --align-items: center;
+//   margin-left: 20%;
 
-  margin-top: 30px;
-  --background-color: rgb(246, 248, 250);
-}
-.image{
-  background-color: rgb(246, 248, 250);
+//   margin-top: 30px;
+//   --background-color: rgb(246, 248, 250);
+// }
+// .image {
+//   background-color: rgb(246, 248, 250);
+// }
+
+.CC{
+  margin-left: auto;
+  margin-right: auto;
+
+  
 }

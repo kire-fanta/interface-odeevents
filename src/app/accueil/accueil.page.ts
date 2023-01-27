@@ -65,24 +65,30 @@ export class AccueilPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.GetEventByState('encour');
+    this.selectedSegment = 'encour';
 
-    // this.GetEventByState('termine');
-    // this.GetEventByState('avenir');
+    //this.GetEventByState('encour');
+     this.GetEventByState('termine');
+     this.GetEventByState('avenir');
   }
 
   GetEventByState(state: string) {
     return this.eventsService.FindEventsBystatus(state).subscribe((data) => {
       console.log('ddddddddddddddddddd', data);
+
       if (state == 'encour') {
-        this.currentEvents = data;
-        console.log('gggggggggg', data);
-      }
-      if (state == 'avenir') {
+        this.selectedSegment = 'upcoming';
         this.upcomingEvents = data;
+        console.log('upcomming', data);
+      }
+      if (state == 'all') {
+        this.selectedSegment = 'all';
+        this.allEvents = data;
       }
       if (state == 'termine') {
+        this.selectedSegment = 'past';
         this.pastEvents = data;
+        console.log(this.pastEvents)
       }
     });
   }

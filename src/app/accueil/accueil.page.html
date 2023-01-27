@@ -6,22 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-<ion-toolbar class="search">
-  <ion-searchbar></ion-searchbar>
-  <ion-button class="butonevents" routerLink="/tabs/events">
-    Créer un évenements</ion-button
-  >
-</ion-toolbar>
+  <ion-toolbar class="search">
+    <ion-searchbar></ion-searchbar>
+    <ion-button class="butonevents" routerLink="/tabs/events">
+      Créer un évenements</ion-button
+    >
+  </ion-toolbar>
 
-<ion-segment [(ngModel)]="selectedSegment">
-  <ion-segment-button value="upcoming"> Evénements à venir </ion-segment-button>
-  <ion-segment-button value="past"> Evénements passés </ion-segment-button>
-  <ion-segment-button value="all"> Tous les événements </ion-segment-button>
-</ion-segment> 
+  <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment-button value="upcoming" (click)="GetEventByState('avenir')">
+      Evénements à venir
+    </ion-segment-button>
+    <ion-segment-button (click)="GetEventByState('termine')" value="past">
+      Evénements passés
+    </ion-segment-button>
+    <ion-segment-button value="all"> Tous les événements </ion-segment-button>
+  </ion-segment>
 
-<!--
+  <!--
   segment ionique(events encous,passes,terminer)
 
 
@@ -31,49 +34,56 @@
 
 -->
 
-<ion-content>
-  <!-- <ion-segment [(ngModel)]="selectedSegment">
+  <ion-content [ngSwitch]="selectedSegment">
+    <!-- <ion-segment [(ngModel)]="selectedSegment">
     <ion-segment-button value="upcoming">
       Evénements à venir dfhtrdt
     </ion-segment-button>
     <ion-segment-button value="current"> Evénements en cours </ion-segment-button>
     <ion-segment-button value="past"> Evénements passés rsydtfyyyyyyyyyyyyyyyyyyyyyy</ion-segment-button>
   </ion-segment> -->
+    <div class=" " [ngSwitch]="selectedSegment">
+      <div *ngSwitchCase="'upcoming'" class="CC">
+        <div class="container">
+          <ion-card *ngFor="let event of upcomingEvents">
+            <ion-card-header>
+              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>description de l'événement : {{event.description}}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <div *ngSwitchCase="'termine'">
+          <ion-card *ngFor="let event of pastEvents">
+            <ion-card-header>
+              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>description de l'événement : {{event.description}}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <div *ngSwitchCase="'all'">
+          <ion-card *ngFor="let event of allEvents">
+            <ion-card-header>
+              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>description de l'événement : {{event.description}}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+  </ion-content>
 
-  <ion-card *ngFor="let event of upcomingEvents">
-    <ion-card-header>
-      <ion-card-title>{{event.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>description de l'événement : {{event.description}}</p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card *ngFor="let event of pastEvents">
-    <ion-card-header>
-      <ion-card-title>{{event.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>description de l'événement : {{event.description}}</p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card *ngFor="let event of pastEvents">
-    <ion-card-header>
-      <ion-card-title>{{event.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>description de l'événement : {{event.description}}</p>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
-
-<!-- 
+  <!-- 
 <ion-toolbar>
   <ion-title> Segment Example </ion-title>
 </ion-toolbar> -->
 
-<!-- <ion-content>
+  <!-- <ion-content>
   <div [ngSwitch]="selectedSegment">
     <div *ngSwitchCase="'upcoming'">
       <ion-list>
@@ -92,11 +102,11 @@
     </div>
   </div>
 </ion-content> -->
-<!-- <ion-footer>
+  <!-- <ion-footer>
   <ion-toolbar>
     <ion-title>
       Footer
     </ion-title>
   </ion-toolbar>
 </ion-footer> -->
-
+</ion-content>

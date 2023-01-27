@@ -22,6 +22,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('../salle/salle.module').then((m) => m.SallePageModule),
       },
+
+      {
+        path: 'profil',
+        loadChildren: () =>
+          import('../profil/profil.module').then((m) => m.ProfilPageModule),
+      },
       {
         path: 'budget',
         loadChildren: () =>

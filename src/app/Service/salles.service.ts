@@ -12,18 +12,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Salle } from '../Model/salle.model';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SallesService {
-
   private sallesUrl = 'api/salles';
-
-  constructor(private http: HttpClient) { }
+  private urlbase: String = 'http://localhost:8080/';
+  constructor(private http: HttpClient) {}
 
   getSalles(): Observable<Salle[]> {
-    return this.http.get<Salle[]>('http://localhost:8080/salles/afficher');
+    return this.http.get<Salle[]>(this.urlbase + 'salles/afficher');
   }
 
   getSalle(id: number): Observable<Salle> {

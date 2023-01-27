@@ -16,42 +16,43 @@
 import { Component, OnInit } from '@angular/core';
 // import { BudgetService } from '../Service/budget.service';
 import { Router } from '@angular/router';
+import { BudgetService } from '../Service/budget.service';
 
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.page.html',
   styleUrls: ['./budget.page.scss'],
-  // providers: [BudgetService],
+ providers: [BudgetService],
 })
 export class BudgetPage implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
+  prevision: any;
+
+  constructor(private budgetService: BudgetService, private router: Router) {}
+
+  ngOnInit() {
+    this.getAllPrevisions();
   }
-  previsions: any;
 
-  // constructor(private budgetService: BudgetService, private router: Router) {}
+  getAllPrevisions() {
+    this.budgetService.getAllPrevisions().subscribe((previsions) => {
+      this.prevision = previsions;
+    });
+  }
 
-  // ngOnInit() {
-  //   this.getAllPrevisions();
-  // }
+  addPrevision() {
+    this.router.navigate(['/add-prevision']);
+  }
 
-  // getAllPrevisions() {
-  //   this.budgetService.getAllPrevisions().subscribe((previsions) => {
-  //     this.previsions = previsions;
-  //   });
-  // }
+  editPrevision(id: number) {
+    this.router.navigate(['/edit-prevision/' + id]);
+  }
 
-  // addPrevision() {
-  //   this.router.navigate(['/add-prevision']);
-  // }
-
-  // editPrevision(id: number) {
-  //   this.router.navigate(['/edit-prevision/' + id]);
-  // }
-
-  // deletePrevision(id: number) {
-  //   this.budgetService.deletePrevision(id).subscribe(() => {
-  //     this.getAllPrevisions();
-  //   });
-  // }
+  supprimerPrevision(idPrevision: number) {
+    this.budgetService.supprimerPrevision(idPrevision).subscribe((data) => {
+      this.getAllPrevisions();
+    });
+  }
 }
