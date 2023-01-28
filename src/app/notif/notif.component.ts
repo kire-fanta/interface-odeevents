@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { popoverController } from '@ionic/core';
 
 @Component({
   selector: 'app-notif',
@@ -6,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notif.component.scss'],
 })
 export class NotifComponent implements OnInit {
+  constructor(private pvCrL: PopoverController) {}
 
-  constructor() { }
-
+  close() {
+    this.pvCrL.dismiss();
+  }
   ngOnInit() {}
-
 }

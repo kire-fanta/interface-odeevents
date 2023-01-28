@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
   },
+  {
+    path: 'tache',
+    loadChildren: () => import('./tache/tache.module').then( m => m.TachePageModule)
+  },
 
   
 ];
