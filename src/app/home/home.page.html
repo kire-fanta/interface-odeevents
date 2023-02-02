@@ -1,7 +1,7 @@
 <ion-content>
   <div>
     <!-- <ion-toggle [enableOnOffLabels]="true"></ion-toggle> -->
-    <a href="https://front.codes/"></a>
+    <!-- <a href="https://front.codes/"></a> -->
 
     <!-- 
 
@@ -20,49 +20,76 @@
           <div class="col-12 text-center align-self-center py-5">
             <div class="section pb-5 pt-5 pt-sm-2 text-center">
               <img src="../assets/IMAGE/ok.png" alt="" />
-
-              <h6 class="mb-0 pb-3">
-                <span>Connexion</span><span>Inscription</span>
-              </h6>
+              <!-- <label for="toggle-on" class="btn" id="reg-log" name="reg-log"
+                >Connexion</label
+              >
+              <label for="toggle-off" class="btn" id="reg-log" name="reg-log"
+                >Inscription</label
+              > -->
 
               <input
                 class="checkbox"
                 type="checkbox"
                 id="reg-log"
                 name="reg-log"
+                style="width: 50%"
               />
-              <label for="reg-log"></label>
+
+              <label for="reg-log" style="color: white"
+                >Connexion &nbsp;&nbsp; Inscription</label
+              >
               <div class="card-3d-wrap mx-auto">
                 <div class="card-3d-wrapper">
                   <div class="card-front">
                     <div class="center-wrap">
                       <div class="section text-center">
-                        <h4 class="mb-4 pb-3">Connexion</h4>
-                        <div class="form-group">
-                          <input
-                            type="email"
-                            name="logemail"
-                            class="form-style"
-                            placeholder=" Email"
-                            id="logemail"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-                        <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder=" Mot de passe "
-                            id="logpass"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-lock-alt"></i>
-                        </div>
-                        <a href="#" class="btn mt-4" routerLink="/tabs/accueil"
-                          >Envoyer</a
+                        <form
+                          *ngIf="!isLoggedIn"
+                          name="form"
+                          (ngSubmit)="f.form.valid && onSubmit()"
+                          #f="ngForm"
+                          novalidate
                         >
+                          <h4 class="mb-4 pb-3">Connexion</h4>
+
+                          <div class="form-group">
+                            <input
+                              ngModel
+                              autofocus
+                              name="username"
+                              [(ngModel)]="form.username"
+                              required
+                              #username="ngModel"
+                              type="text"
+                              class="form-style"
+                              placeholder=" Email"
+                              id="logemail"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              ngModel
+                              autofocus
+                              name="password"
+                              [(ngModel)]="form.password"
+                              required
+                              #password="ngModel"
+                              type="password"
+                              class="form-style"
+                              placeholder=" Mot de passe "
+                              id="logpass"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+
+                          <button type="submit" class="btn mt-4">
+                            Envoyer
+                          </button>
+                        </form>
+
                         <p class="mb-0 mt-4 text-center">
                           <a href="#0" class="link"
                             >Vous avez oublier votre mot de passe ?</a
@@ -71,6 +98,7 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="card-back">
                     <div class="center-wrap">
                       <div class="section text-center">
@@ -104,6 +132,24 @@
                             class="form-style"
                             placeholder="Mot de passe "
                             id="logpass"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <input
+                            ngModel
+                            autofocus
+                            name="usernameOrEmail"
+                            [(ngModel)]="form.username"
+                            required
+                            #usernameOrEmail="ngModel"
+                            type="role"
+                            name="role"
+                            class="form-style"
+                            placeholder=" role "
+                            id="logrole"
                             autocomplete="off"
                           />
                           <i class="input-icon uil uil-lock-alt"></i>

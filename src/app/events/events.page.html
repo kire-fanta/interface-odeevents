@@ -62,20 +62,28 @@
 
     <ion-item>
       <ion-label>Lieu</ion-label>
+      <ion-select [(ngModel)]="location">
+        <ion-select-option value="inside" (onselect)="location='inside'"
+          >Au siège</ion-select-option
+        >
+        <ion-select-option value="outside" (onselect)="location='outside'"
+          >A l'extérieur</ion-select-option
+        >
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-radio-group [(ngModel)]="location">
         <ion-item>
           <ion-label>Au siège</ion-label>
-          <ion-radio value="inside"></ion-radio>
+          <ion-radio value="inside" (click)="location='inside'"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label>A l'extérieur</ion-label>
-          <ion-radio value="outside"></ion-radio>
+          <ion-radio value="outside" (click)="location='outside'"></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-item>
-<!-- 
+    <!-- 
  <ion-item>
   <ion-label>Lieu</ion-label>
 </ion-item>

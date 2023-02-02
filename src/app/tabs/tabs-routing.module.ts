@@ -13,9 +13,11 @@ const routes: Routes = [
           import('../accueil/accueil.module').then((m) => m.AccueilPageModule),
       },
       {
-        path: 'events',
+        path: 'evenement',
         loadChildren: () =>
-          import('../events/events.module').then((m) => m.EventsPageModule),
+          import('../evenement/evenement.module').then(
+            (m) => m.EvenementPageModule
+          ),
       },
       {
         path: 'salle',

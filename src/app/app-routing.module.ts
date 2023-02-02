@@ -16,6 +16,14 @@ const routes: Routes = [
     path: 'tache',
     loadChildren: () => import('./tache/tache.module').then( m => m.TachePageModule)
   },
+  {
+    path: 'evenement',
+    loadChildren: () => import('./evenement/evenement.module').then( m => m.EvenementPageModule)
+  },
+  {
+    path: 'motpasse',
+    loadChildren: () => import('./motpasse/motpasse.module').then( m => m.MotpassePageModule)
+  },
 
   
 ];

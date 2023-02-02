@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
+back() {
+throw new Error('Method not implemented.');
+}
+updatePassword() {
+throw new Error('Method not implemented.');
+}
+user: any;
 
   constructor() { }
 
@@ -13,3 +20,4 @@ export class ProfilPage implements OnInit {
   }
 
 }
+

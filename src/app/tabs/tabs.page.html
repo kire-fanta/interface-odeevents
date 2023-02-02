@@ -1,9 +1,12 @@
 <ion-buttons slot="primary" class="notiff">
-  <ion-button  (click)="opennotif()">
+  <ion-button (click)="opennotif()">
     <ion-icon class="not" name="notifications-outline"></ion-icon>
     <ion-badge>3</ion-badge>
   </ion-button>
 </ion-buttons>
+<ion-button id="popover-button">
+  <i class="bi bi-three-dots"></i>
+</ion-button>
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
@@ -12,7 +15,7 @@
       <ion-label>Accueil</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="events">
+    <ion-tab-button tab="evenement">
       <ion-icon name="calendar" aria-hidden="true"></ion-icon>
 
       <ion-label>Evenément</ion-label>
@@ -45,3 +48,4 @@
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
+<!--créer un formulaire de contact en ionic -->

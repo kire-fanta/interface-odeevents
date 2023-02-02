@@ -14,6 +14,14 @@ export class EventsPage implements OnInit {
 
   constructor(private pvrCtlr: PopoverController) {}
 
+  // isVisible = true;
+  // visible() {
+  //   this.isVisible = false;
+  // }
+  // novisible() {
+  //   this.isVisible = true;
+  // }
+
   ngOnInit() {}
 
   onLocationChange(location: string) {

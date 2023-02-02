@@ -8,6 +8,11 @@ const routes: Routes = [
     path: '',
     component: AccueilPage,
   },
+  {
+    path: 'events',
+    loadChildren: () =>
+      import('../events/events.module').then((m) => m.EventsPageModule),
+  },
   // {
   //   path: 'salle',
   //   loadChildren: () =>

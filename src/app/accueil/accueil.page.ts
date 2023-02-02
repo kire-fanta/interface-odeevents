@@ -32,7 +32,9 @@
 // }
 
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 import { Event } from '../Model/event.model'; // importe le modèle pour les événements
+import { NotifComponent } from '../notif/notif.component';
 import { EventsService } from '../Service/events.service'; // importe le modèle pour les événements
 
 @Component({
@@ -49,7 +51,7 @@ export class AccueilPage implements OnInit {
   state: any;
   selectedSegment: string | undefined;
 
-  constructor(private eventsService: EventsService) {
+  constructor(private eventsService: EventsService, ) {
     //   this.selectedSegment = 'upcoming';
     //   this.upcomingEvents = [
     //     new Event('Event 1', '2022-01-01'),
@@ -71,10 +73,10 @@ export class AccueilPage implements OnInit {
     this.GetEventByState('encour');
     this.GetEventByState('termine');
   }
-
+ 
   GetEventByState(state: string) {
     return this.eventsService.FindEventsBystatus(state).subscribe((data) => {
-      console.log('ddddddddddddddddddd', data);
+      console.log(data);
 
       if (state == 'all') {
         this.selectedSegment = 'all';

@@ -21,8 +21,9 @@
     <ion-segment-button (click)="GetEventByState('termine')" value="past">
       Evénements passés
     </ion-segment-button>
-    <ion-segment-button value="all"  (click)="GetEventByState('avenir')"> 
-      Tous les événements </ion-segment-button>
+    <ion-segment-button value="all" (click)="GetEventByState('all')">
+      Tous les événements
+    </ion-segment-button>
   </ion-segment>
 
   <!--
@@ -43,47 +44,77 @@
     <ion-segment-button value="current"> Evénements en cours </ion-segment-button>
     <ion-segment-button value="past"> Evénements passés rsydtfyyyyyyyyyyyyyyyyyyyyyy</ion-segment-button>
   </ion-segment> -->
-    <div class=" " [ngSwitch]="selectedSegment">
-      <div *ngSwitchCase="'upcoming'" class="CC">
+    <div class=" " [ngSwitch]="selectedSegment" >
+      <div *ngSwitchCase="'upcoming'" class="CC"style="width: 96%; margin-left:-2% " >
         <div class="container">
-          <ion-card *ngFor="let event of upcomingEvents">
+          <ion-card *ngFor="let event of upcomingEvents, let i=index">
             <ion-thumbnail slot="start">
               <img src="{{event.image}}" />
             </ion-thumbnail>
             <ion-card-header>
-              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+              <ion-card-title>{{event.nomEvenement}} {{i}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
               <p>description de l'événement : {{event.description}}</p>
+              <p>
+                Date de l'événement :
+                <input type="date" [(ngModel)]="event.date" />
+              </p>
             </ion-card-content>
           </ion-card>
+                  <h1 style="height: 25vh;"></h1>
+
         </div>
-        <div *ngSwitchCase="'termine'">
-          <ion-card *ngFor="let event of pastEvents">
-            <ion-thumbnail slot="start">
-              <img src="{{event.image}}" />
-            </ion-thumbnail>
-            <ion-card-header>
-              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <p>description de l'événement : {{event.description}}</p>
-            </ion-card-content>
-          </ion-card>
-        </div>
-        <div *ngSwitchCase="'all'">
-          <ion-card *ngFor="let event of allEvents">
-            <ion-thumbnail slot="start">
-              <img src="{{event.image}}" />
-            </ion-thumbnail>
-            <ion-card-header>
-              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <p>description de l'événement : {{event.description}}</p>
-            </ion-card-content>
-          </ion-card>
-        </div>
+      </div>
+      <div *ngSwitchCase="'past'" >
+        <ion-card *ngFor="let event of pastEvents">
+          <!-- <ion-thumbnail slot="start">
+            <img src="{{event.image}}" />
+          </ion-thumbnail> -->
+          <img src="{{event.image}}" />
+
+          <ion-card-header>
+            <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>description de l'événement : {{event.description}}</p>
+            <p>Date de l'événement : {{event.date}}</p>
+          </ion-card-content>
+        </ion-card>
+                <h1 style="height: 25vh;"></h1>
+
+      </div>
+
+      <div *ngSwitchCase="'all'">
+        <ion-card
+          *ngFor="let event of pastEvents; let event1 of upcomingEvents"
+        >
+          <!-- <ion-thumbnail slot="start">
+            <img src="{{event.image}}" />
+          </ion-thumbnail> -->
+          <img src="{{event.image}}" />
+
+          <ion-card-header>
+            <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>description de l'événement : {{event.description}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngFor="let event1 of pastEvents">
+          <!-- <ion-thumbnail slot="start">
+            <img src="{{event1.image}}" />
+          </ion-thumbnail> -->
+
+          <ion-card-header>
+            <ion-card-title>{{event1.nomEvenement}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>description de l'événement : {{event1.description}}</p>
+          </ion-card-content>
+        </ion-card>
+        <h1 style="height: 25vh;"></h1>
       </div>
     </div>
   </ion-content>
@@ -93,14 +124,25 @@
   <ion-title> Segment Example </ion-title>
 </ion-toolbar> -->
 
-  <ion-content>
+  <!-- <ion-content>
     <div [ngSwitch]="selectedSegment">
       <div *ngSwitchCase="'upcoming'">
-        <ion-list>
+        <!-- <ion-list> 
           <ion-item *ngFor="let event of upcomingEvents">{{event}}</ion-item>
-        </ion-list>
+        </ion-list> 
+        <ion-card *ngFor="let event of upcomingEvents">
+            <ion-thumbnail slot="start">
+              <img src="{{event.image}}" />
+            </ion-thumbnail>
+            <ion-card-header>
+              <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>description de l'événement : {{event.description}}</p>
+            </ion-card-content>
+          </ion-card>
       </div>
-      <div *ngSwitchCase="'past'">
+      <!-- <div *ngSwitchCase="'past'">
         <ion-list>
           <ion-item *ngFor="let event of pastEvents">{{event}}</ion-item>
         </ion-list>
@@ -109,7 +151,7 @@
         <ion-list>
           <ion-item *ngFor="let event of allEvents">{{event}}</ion-item>
         </ion-list>
-      </div>
+      </div> 
     </div>
   </ion-content>
   <!-- <ion-footer>
@@ -118,5 +160,6 @@
       Footer
     </ion-title>
   </ion-toolbar>
-</ion-footer> -->
+</ion-footer> 
+</ion-content> -->
 </ion-content>
