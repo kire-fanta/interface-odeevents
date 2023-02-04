@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BudgetService {
+  getBudgets(id: any) {
+    throw new Error('Method not implemented.');
+  }
   deletePrevision(id: number) {
     throw new Error('Method not implemented.');
   }
@@ -13,8 +16,10 @@ export class BudgetService {
 
   constructor(private http: HttpClient) {}
 
-  calculerDepense(prevision: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/calculer`, prevision);
+  calculerDepense(id: number): Observable<any> {
+    return this.http.get<any>(
+      `http://localhost:8080/previsions-depenses/calculer-depense/${id}`
+    );
   }
 
   gererPrevision(prevision: any): Observable<any> {
@@ -32,4 +37,9 @@ export class BudgetService {
   getPrevisionById(idPrevision: any): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${idPrevision}`);
   }
+  getEvens(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/evenements/all/');
+  }
 }
+
+

@@ -14,23 +14,36 @@ const routes: Routes = [
   },
   {
     path: 'tache',
-    loadChildren: () => import('./tache/tache.module').then( m => m.TachePageModule)
+    loadChildren: () =>
+      import('./tache/tache.module').then((m) => m.TachePageModule),
   },
   {
     path: 'evenement',
-    loadChildren: () => import('./evenement/evenement.module').then( m => m.EvenementPageModule)
+    loadChildren: () =>
+      import('./evenement/evenement.module').then((m) => m.EvenementPageModule),
   },
   {
     path: 'motpasse',
-    loadChildren: () => import('./motpasse/motpasse.module').then( m => m.MotpassePageModule)
+    loadChildren: () =>
+      import('./motpasse/motpasse.module').then((m) => m.MotpassePageModule),
   },
-
-  
+  {
+    path: 'ebudget',
+    loadChildren: () =>
+      import('./ebudget/ebudget.module').then((m) => m.EbudgetPageModule),
+  },
+  {
+    path: 'event-details',
+    loadChildren: () =>
+      import('./event-details/event-details.module').then(
+        (m) => m.EventDetailsPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

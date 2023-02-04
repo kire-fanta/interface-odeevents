@@ -11,7 +11,7 @@ export class TokenstorageService {
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
+    // window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
@@ -43,5 +43,4 @@ export class TokenstorageService {
     //sinon on retourne false
     return false;
   }
-  
 }

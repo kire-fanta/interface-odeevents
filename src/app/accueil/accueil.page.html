@@ -9,7 +9,7 @@
 <ion-content>
   <ion-toolbar class="search">
     <ion-searchbar></ion-searchbar>
-    <ion-button class="butonevents" routerLink="/tabs/events">
+    <ion-button class="butonevents" routerLink="./events.page">
       Créer un évenements</ion-button
     >
   </ion-toolbar>
@@ -77,8 +77,8 @@
             <ion-card-title>{{event.nomEvenement}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <p>description de l'événement : {{event.description}}</p>
-            <p>Date de l'événement : {{event.date}}</p>
+            <p>description de l'événement : {{event.description}}</p>XAMP
+            <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
           </ion-card-content>
         </ion-card>
                 <h1 style="height: 25vh;"></h1>

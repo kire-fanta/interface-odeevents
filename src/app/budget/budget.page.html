@@ -15,7 +15,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-card *ngFor="let event of events">
+    <ion-card-header>
+      <ion-card-title>{{ event.nomEvenement }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
+      <p>Budget total: {{ budgettotal }}</p>
+    </ion-card-content>
+    <ion-item  class="icongroup">
+      <ion-icon name="trash-outline"></ion-icon>
+      <!-- <ion-button (click)=" editPrevision(prevision.id)"
+        >Modifier le budget</ion-button -->
+      <!-- >
+      <ion-button (click)="supprimerPrevision(prevision.id)"
+        >Supprimer l'événement</ion-button
+      > -->
+      <!-- <ion-icon name="create-outline "></ion-icon> -->
+      <ion-icon name="create-outline" (click)="goToEventDetails(event)"></ion-icon>
+    </ion-item>
+  </ion-card>
+
+  <!-- <ion-list>
     <ion-item-sliding *ngFor="let prevision of prevision">
       <ion-item>
         <ion-label>{{prevision.libelle}}</ion-label>
@@ -23,15 +44,20 @@
         <ion-label>{{prevision.quantite}}</ion-label>
       </ion-item>
       <ion-item-options side="end">
-         <ion-item-option color="danger" (click)="supprimerPrevision(prevision.id)">Supprimer</ion-item-option> 
+        <ion-item-option
+          color="danger"
+          (click)="supprimerPrevision(prevision.id)"
+          >Supprimer</ion-item-option
+        >
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
-       (click)="ajouterPrevision()" -->
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+      (click)="ajouterPrevision()" -->
+  <ion-icon name="add"></ion-icon>
+  <!-- </ion-fab-button>
+  </ion-fab> -->
+  -->
 </ion-content>

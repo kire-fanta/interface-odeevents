@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Détails budgétaires de l'événement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let budget of budgets">
+      <ion-card-content>
+        <ion-label>{{budget.libelle}}</ion-label>
+        <ion-label>{{budget.prixUnitaire}}</ion-label>
+        <ion-label>{{budget.quantite}}</ion-label>
+        <ion-label>{{budget.budget}}</ion-label>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-item>
+    <ion-label>Budget total:</ion-label>
+    <ion-label>{{ budgettotal}}</ion-label>
+    <!-- <p>Budget total: {{ budgettotal }}</p> -->
+  </ion-item>
+</ion-content>

@@ -1,0 +1,122 @@
+]
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="popover-button">
+        <ion-icon name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+
+      popup
+      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item [button]="true" [detail]="false" (click)="logOut()"
+                >Se deconnecter</ion-item
+              >
+              <ion-item
+                [button]="true"
+                [detail]="false"
+                (click)="gotoPasswordChangePage()"
+                >Changer mots de passe</ion-item
+              >
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+fin-popub
+<ion-content>
+  <form
+    #updateProfileForm="ngForm"
+    (ngSubmit)="onSubmit(updateProfileForm.value.nom,updateProfileForm.value.prenom,updateProfileForm.value.username)"
+    enctype="multipart/form-data"
+  >
+    <ion-grid>
+      <ion-row class="ion-justify-content-center marge">
+        <div class="form-group">
+          <ion-avatar class="avtar">
+            <label for="image">
+              <!-- <img src="{{ imageUrl }}{{ user?.id }}.png" /> -->
+            </label>
+            <input
+              id="image"
+              style="visibility: hidden"
+              (change)="onProfilePictureSelected($event)"
+              #fileToUpload
+              type="file"
+              class="form-control-file"
+              name="image"
+              placeholder="photo"
+              accept="image/*"
+              (click)="fileToUpload.click()"
+            />
+          </ion-avatar>
+        </div>
+      </ion-row>
+    </ion-grid>
+    <div class="container">
+      <div class="user-details">
+        <div class="form-group">
+          <label for="nom">Nom: </label>
+          <input
+            type="text"
+            ngModel="{{ user.nom }}"
+            class="form-control"
+            id="nom"
+            name="nom"
+            aria-describedby="nom"
+            placeholder="Entrez votre nom"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prenom: </label>
+          <input
+            type="text"
+            id="prenom"
+            name="prenom"
+            ngModel="{{ user.prenom }}"
+            class="form-control"
+            aria-describedby="prenom"
+            placeholder="Entrez votre prenom"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail: </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            ngModel="{{ user.email }}"
+            class="form-control"
+            placeholder="Entrez votre Email"
+            disable
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            ngModel="{{ user.username }}"
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+        </div>
+        <div class="button">
+          <input
+            type="submit"
+            value="Enregistrer"
+            [disabled]="updateProfileForm.invalid"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-content>
