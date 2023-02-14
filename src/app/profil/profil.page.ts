@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../Service/users.service';
 import { TokenstorageService } from '../tokenstorage.service';
 
@@ -10,15 +10,19 @@ import { TokenstorageService } from '../tokenstorage.service';
 })
 export class ProfilPage implements OnInit {
   imageprofil: any;
-  // imageUrl: string = 'http://localhost:8080/images/user/';
+  imageUrl: string = "http://localhost:8080/images/user/"
   user: any;
   id!: number;
   modifs: any;
+  nom!: string;
+  prenom!: string;
+  username!: string;
   modif: any = {
     nom: null,
     prenom: null,
     username: null,
   };
+  userId: any;
   back() {
     throw new Error('Method not implemented.');
   }
@@ -29,12 +33,16 @@ export class ProfilPage implements OnInit {
   constructor(
     private storage: TokenstorageService,
     private userService: UsersService,
-    private route: ActivatedRoute
+    private route: Router
   ) {}
 
   ngOnInit() {
-    this.user = this.storage.getUser().id;
+    this.userId = this.storage.getUser().id;
+    console.log(this.userId + ' is already');
     //this.id = this.route.snapshot.params['id'];
+    setTimeout(() => {
+      this.getOneUser();
+    }, 500);
     console.log(this.user);
   }
   logOut: any;
@@ -42,21 +50,50 @@ export class ProfilPage implements OnInit {
     this.imageprofil = evente.target['files'][0];
     console.log(this.imageprofil);
   }
-  gotoPasswordChangePage() {
-    // this.route.navigate(['',this.user])
-  }
 
-  onSubmit(nom: string, prenom: string, username: string): void {
+
+  onSubmit(): void {
     this.userService
-      .ModifierUser(nom, prenom, this.imageprofil, username, this.user)
+      .ModifierUser(
+        this.nom,
+        this.prenom,
+        this.imageprofil,
+        this.username,
+        this.email,
+        this.userId
+      )
       .subscribe((data) => {
         this.modifs = data;
         console.log(data);
       });
   }
-  getOneUser(id: number) {
-    this.userService.getOneUserById(id).subscribe((data) => {
+  email(
+    nom: string,
+    prenom: string,
+    imageprofil: any,
+    username: string,
+    email: any,
+    userId: any
+  ) {
+    throw new Error('Method not implemented.');
+  }
+  getOneUser() {
+    this.userService.getOneUserById(this.userId).subscribe((data) => {
       this.user = data;
     });
   }
+
+  reloadPage(): void {
+   window.location.reload();
+    
+  }
+
+  logout(): void {
+
+    this.storage.signOut();
+    this.route.navigateByUrl('home');
+    this.reloadPage();
+  }
+
+  
 }

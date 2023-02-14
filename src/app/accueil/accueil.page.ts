@@ -1,36 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-accueil',
-//   templateUrl: './accueil.page.html',
-//   styleUrls: ['./accueil.page.scss'],
-// })
-// export class AccueilPage implements OnInit {
-//   selectedSegment: string;
-//   upcomingEvents: any[];
-//   pastEvents: any[];
-//   allEvents: any[];
-
-//   constructor() {
-//     this.selectedSegment = 'upcoming';
-//     this.upcomingEvents = ['Event 1', 'Event 2', 'Event 3'];
-//     this.pastEvents = ['Event 4', 'Event 5', 'Event 6'];
-//     this.allEvents = [
-//       'Event 1',
-//       'Event 2',
-//       'Event 3',
-//       'Event 4',
-//       'Event 5',
-//       'Event 6',
-//     ];
-//   }
-
-//   cat:String='event'
-
-//   ngOnInit() {}
-
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { Event } from '../Model/event.model'; // importe le modèle pour les événements
@@ -43,15 +10,16 @@ import { EventsService } from '../Service/events.service'; // importe le modèle
   styleUrls: ['./accueil.page.scss'],
 })
 export class AccueilPage implements OnInit {
-  currentEvents: any;
+  currentEvents: Event[] = [];
   upcomingEvents: Event[] = [];
   pastEvents: Event[] = [];
   allEvents!: Event[];
   list: any;
   state: any;
   selectedSegment: string | undefined;
+  navCtrl: any;
 
-  constructor(private eventsService: EventsService, ) {
+  constructor(private eventsService: EventsService) {
     //   this.selectedSegment = 'upcoming';
     //   this.upcomingEvents = [
     //     new Event('Event 1', '2022-01-01'),
@@ -73,14 +41,15 @@ export class AccueilPage implements OnInit {
     this.GetEventByState('encour');
     this.GetEventByState('termine');
   }
- 
+
   GetEventByState(state: string) {
     return this.eventsService.FindEventsBystatus(state).subscribe((data) => {
       console.log(data);
 
-      if (state == 'all') {
-        this.selectedSegment = 'all';
-        this.allEvents = data;
+      if (state == 'encour') {
+        this.selectedSegment = 'current';
+        this.currentEvents = data;
+        console.log('current', this.currentEvents);
       }
 
       if (state == 'avenir') {
@@ -97,4 +66,73 @@ export class AccueilPage implements OnInit {
       }
     });
   }
+
+
+
+
+
+
+   goToEvent(event: any) {
+    this.navCtrl.navigateForward('events', {
+      queryParams: {
+        event: event,
+      },
+    });
+  }
 }
+
+// import { Component, OnInit } from '@angular/core';
+// import { PopoverController } from '@ionic/angular';
+// import { Event } from '../Model/event.model'; // importe le modèle pour les événements
+// import { NotifComponent } from '../notif/notif.component';
+// import { EventsService } from '../Service/events.service'; // importe le modèle pour les événements
+
+// @Component({
+//   selector: 'app-accueil',
+//   templateUrl: './accueil.page.html',
+//   styleUrls: ['./accueil.page.scss'],
+// })
+// export class AccueilPage implements OnInit {
+//   currentEvents: any;
+//   upcomingEvents: Event[] = [];
+//   pastEvents: Event[] = [];
+//   allEvents!: Event[];
+//   list: any;
+//   state: any;
+//   selectedSegment: string | undefined;
+//   events:any;
+//   constructor(private eventsService: EventsService) {}
+
+//   ngOnInit() {
+//     this.selectedSegment = 'upcoming';
+
+//     this.GetEventByState('avenir');
+//     this.GetEventByState('encour');
+//     this.GetEventByState('termine');
+//   }
+
+//   GetEventByState(state: string) {
+//     return this.eventsService.FindEventsBystatus(state).subscribe((data) => {
+//       console.log(data);
+
+//       if (state == 'all') {
+//         this.selectedSegment = 'all';
+//         this.allEvents = data;
+//       }
+
+//       if (state == 'avenir') {
+//         this.selectedSegment = 'upcoming';
+//         this.upcomingEvents = data;
+//         console.log('upcomming', this.upcomingEvents);
+//       }
+
+//       if (state == 'termine') {
+//         this.selectedSegment = 'past';
+//         this.pastEvents = data;
+//         console.log(this.pastEvents);
+//       }
+
+//       this.allEvents = this.pastEvents.concat(this.upcomingEvents);
+//     });
+//   }
+// }

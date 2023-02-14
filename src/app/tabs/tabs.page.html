@@ -1,12 +1,47 @@
-<ion-buttons slot="primary" class="notiff">
-  <ion-button (click)="opennotif()">
-    <ion-icon class="not" name="notifications-outline"></ion-icon>
-    <ion-badge>3</ion-badge>
-  </ion-button>
-</ion-buttons>
-<ion-button id="popover-button">
-  <i class="bi bi-three-dots"></i>
-</ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary" class="notiff">
+      <ion-button (click)="opennotif()" fill="clear">
+        <ion-icon class="not" name="notifications-outline"></ion-icon>
+        <ion-badge>3</ion-badge>
+      </ion-button>
+    </ion-buttons>
+    <ion-button id="popover-button">
+      <i class="bi bi-three-dots"></i>
+    </ion-button>
+
+    <ion-buttons>
+      <ion-button id="popoverI-button">
+        <ion-icon name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- popup -->
+    <ion-popover trigger="popoverI-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <a>
+               <ion-item [button]="true" [detail]="false" routerLink="/profil"
+              >Mon profil </ion-item
+            >
+             <ion-item [button]="true" [detail]="false" routerLink="/motpasse"
+              >Changer mots de passe</ion-item
+            >
+              <ion-item (click)="logout()" routerLink="/home"
+                >Se deconnecter
+              </ion-item></a
+            >
+           
+            
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<!-- p -->
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
@@ -42,9 +77,9 @@
       <ion-label>Budget</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="profil">
-      <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-      <ion-label>Profil</ion-label>
+    <ion-tab-button tab="tache">
+      <ion-icon name="list-circle-outline"></ion-icon>
+      <ion-label>Tache</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

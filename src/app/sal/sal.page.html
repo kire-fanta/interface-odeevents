@@ -1,0 +1,83 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Ajouter une salle</ion-card-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-card-header>
+  <ion-card-content>
+    <form #form="ngForm" (ngSubmit)="AjoutSalle()">
+      <ion-item>
+        <ion-label for="nombreplace" position="floating"
+          >Nombre de places</ion-label
+        >
+        <ion-input
+          type="number"
+          name="nombreplace"
+          [(ngModel)]="nombreplace"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label for="libelle" position="floating">Libelle</ion-label>
+        <ion-input
+          type="text"
+          name="libelle"
+          [(ngModel)]="libelle"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="etage" position="floating">Etage</ion-label>
+        <ion-input
+          type="text"
+          name="etage"
+          [(ngModel)]="etage"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="disponibilite">Disponibilité</ion-label>
+        <ion-checkbox
+          name="disponibilite"
+          [(ngModel)]="disponibilite"
+        ></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="description" position="floating">Description</ion-label>
+        <ion-textarea
+          name="description"
+          [(ngModel)]="description"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="image" position="floating">Image</ion-label>
+        <ion-input
+          type="file"
+          id="files"
+          name="image"
+          [(ngModel)]="image"
+          (change)="televerser($event)"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" for="numero">Numero</ion-label>
+        <ion-input
+          type="number"
+          name="numero"
+          [(ngModel)]="numero"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" [disabled]="!form.valid">Ajouter</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

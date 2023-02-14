@@ -26,9 +26,9 @@ const routes: Routes = [
       },
 
       {
-        path: 'profil',
+        path: 'tache',
         loadChildren: () =>
-          import('../profil/profil.module').then((m) => m.ProfilPageModule),
+          import('../tache/tache.module').then((m) => m.TachePageModule),
       },
       {
         path: 'budget',

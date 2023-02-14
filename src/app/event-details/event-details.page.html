@@ -6,18 +6,38 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let budget of budgets">
+    <!-- <ion-card *ngFor="let budget of budgets">
       <ion-card-content>
         <ion-label>{{budget.libelle}}</ion-label>
         <ion-label>{{budget.prixUnitaire}}</ion-label>
         <ion-label>{{budget.quantite}}</ion-label>
         <ion-label>{{budget.budget}}</ion-label>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
+
+    <table>
+      <thead style="text-align: center; margin: 2%;">
+        <th>Libelle</th>
+        <th>Prix unitaire</th>
+        <th>Quantite</th>
+        <th>Budget total</th>
+      </thead>
+
+      <tbody style="text-align: center;">
+        <tr *ngFor="let budget of budgets">
+          <td>{{budget.libelle}}</td>
+          <td>{{budget.prixUnitaire}}</td>
+          <td>{{budget.quantite}}</td>
+          <td>{{budget.prixUnitaire * budget.quantite}}</td>
+        </tr>
+      </tbody>
+
+
+    </table>
   </ion-list>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label>Budget total:</ion-label>
-    <ion-label>{{ budgettotal}}</ion-label>
+    <ion-label>{{ budgettotal}}</ion-label> -->
     <!-- <p>Budget total: {{ budgettotal }}</p> -->
-  </ion-item>
+  <!-- </ion-item> -->
 </ion-content>

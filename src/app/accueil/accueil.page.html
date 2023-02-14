@@ -9,7 +9,7 @@
 <ion-content>
   <ion-toolbar class="search">
     <ion-searchbar></ion-searchbar>
-    <ion-button class="butonevents" routerLink="./events.page">
+    <ion-button class="butonevents" routerLink="./events">
       Créer un évenements</ion-button
     >
   </ion-toolbar>
@@ -21,8 +21,8 @@
     <ion-segment-button (click)="GetEventByState('termine')" value="past">
       Evénements passés
     </ion-segment-button>
-    <ion-segment-button value="all" (click)="GetEventByState('all')">
-      Tous les événements
+    <ion-segment-button value="current" (click)="GetEventByState('encour')">
+      Evénements en cours
     </ion-segment-button>
   </ion-segment>
 
@@ -44,29 +44,30 @@
     <ion-segment-button value="current"> Evénements en cours </ion-segment-button>
     <ion-segment-button value="past"> Evénements passés rsydtfyyyyyyyyyyyyyyyyyyyyyy</ion-segment-button>
   </ion-segment> -->
-    <div class=" " [ngSwitch]="selectedSegment" >
-      <div *ngSwitchCase="'upcoming'" class="CC"style="width: 96%; margin-left:-2% " >
+    <div class=" " [ngSwitch]="selectedSegment">
+      <div
+        *ngSwitchCase="'upcoming'"
+        class="CC"
+        style="width: 96%; margin-left: -2%"
+      >
         <div class="container">
           <ion-card *ngFor="let event of upcomingEvents, let i=index">
-            <ion-thumbnail slot="start">
-              <img src="{{event.image}}" />
-            </ion-thumbnail>
+            
             <ion-card-header>
-              <ion-card-title>{{event.nomEvenement}} {{i}}</ion-card-title>
+              <ion-card-title>{{event.nomEvenement}} </ion-card-title>
             </ion-card-header>
             <ion-card-content>
+                            <img src="{{event.image}}" />
+
               <p>description de l'événement : {{event.description}}</p>
-              <p>
-                Date de l'événement :
-                <input type="date" [(ngModel)]="event.date" />
-              </p>
+            <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
+
             </ion-card-content>
           </ion-card>
-                  <h1 style="height: 25vh;"></h1>
-
+          <h1 style="height: 25vh"></h1>
         </div>
       </div>
-      <div *ngSwitchCase="'past'" >
+      <div *ngSwitchCase="'past'">
         <ion-card *ngFor="let event of pastEvents">
           <!-- <ion-thumbnail slot="start">
             <img src="{{event.image}}" />
@@ -77,21 +78,19 @@
             <ion-card-title>{{event.nomEvenement}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <p>description de l'événement : {{event.description}}</p>XAMP
+            <p>description de l'événement : {{event.description}}</p>
+            
             <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
           </ion-card-content>
         </ion-card>
-                <h1 style="height: 25vh;"></h1>
-
+        <h1 style="height: 25vh"></h1>
       </div>
 
-      <div *ngSwitchCase="'all'">
+      <div *ngSwitchCase="'current'">
         <ion-card
-          *ngFor="let event of pastEvents; let event1 of upcomingEvents"
+          *ngFor="let event of currentEvents"
         >
-          <!-- <ion-thumbnail slot="start">
-            <img src="{{event.image}}" />
-          </ion-thumbnail> -->
+          
           <img src="{{event.image}}" />
 
           <ion-card-header>
@@ -99,22 +98,26 @@
           </ion-card-header>
           <ion-card-content>
             <p>description de l'événement : {{event.description}}</p>
+                        <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
+
           </ion-card-content>
         </ion-card>
+        <h1 style="height: 25vh"></h1>
 
+<!-- 
         <ion-card *ngFor="let event1 of pastEvents">
-          <!-- <ion-thumbnail slot="start">
-            <img src="{{event1.image}}" />
-          </ion-thumbnail> -->
+                    <img src="{{event1.image}}" />
 
           <ion-card-header>
             <ion-card-title>{{event1.nomEvenement}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <p>description de l'événement : {{event1.description}}</p>
+                        <p>Date de l'événement : {{event1.date | date : 'dd/MM/yyyy'}}</p>
+
           </ion-card-content>
         </ion-card>
-        <h1 style="height: 25vh;"></h1>
+        <h1 style="height: 25vh"></h1> -->
       </div>
     </div>
   </ion-content>

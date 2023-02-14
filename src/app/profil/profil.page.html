@@ -1,38 +1,12 @@
-]
 <ion-header>
   <ion-toolbar>
     <ion-title>profile</ion-title>
-    <ion-buttons slot="end">
-      <ion-button id="popover-button">
-        <ion-icon name="ellipsis-horizontal"></ion-icon>
-      </ion-button>
-
-      popup
-      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
-        <ng-template>
-          <ion-content>
-            <ion-list>
-              <ion-item [button]="true" [detail]="false" (click)="logOut()"
-                >Se deconnecter</ion-item
-              >
-              <ion-item
-                [button]="true"
-                [detail]="false"
-                (click)="gotoPasswordChangePage()"
-                >Changer mots de passe</ion-item
-              >
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-fin-popub
 <ion-content>
   <form
     #updateProfileForm="ngForm"
-    (ngSubmit)="onSubmit(updateProfileForm.value.nom,updateProfileForm.value.prenom,updateProfileForm.value.username)"
+    (ngSubmit)="onSubmit()"
     enctype="multipart/form-data"
   >
     <ion-grid>
@@ -40,7 +14,7 @@ fin-popub
         <div class="form-group">
           <ion-avatar class="avtar">
             <label for="image">
-              <!-- <img src="{{ imageUrl }}{{ user?.id }}.png" /> -->
+              <img src="{{ imageUrl }}{{ user?.imageprofil }}" />
             </label>
             <input
               id="image"
@@ -48,10 +22,10 @@ fin-popub
               (change)="onProfilePictureSelected($event)"
               #fileToUpload
               type="file"
-              class="form-control-file"
-              name="image"
+              name="imageprofil"
               placeholder="photo"
               accept="image/*"
+              [(ngModel)]="imageprofil"
               (click)="fileToUpload.click()"
             />
           </ion-avatar>
@@ -64,12 +38,13 @@ fin-popub
           <label for="nom">Nom: </label>
           <input
             type="text"
-            ngModel="{{ user.nom }}"
+            ngModel="{{ user?.nom }}"
             class="form-control"
             id="nom"
             name="nom"
             aria-describedby="nom"
             placeholder="Entrez votre nom"
+            [(ngModel)]="nom"
             required
           />
         </div>
@@ -79,8 +54,8 @@ fin-popub
             type="text"
             id="prenom"
             name="prenom"
-            ngModel="{{ user.prenom }}"
-            class="form-control"
+            ngModel="{{ user?.prenom }}"
+            [(ngModel)]="prenom"
             aria-describedby="prenom"
             placeholder="Entrez votre prenom"
             required
@@ -92,8 +67,8 @@ fin-popub
             type="email"
             id="email"
             name="email"
-            ngModel="{{ user.email }}"
-            class="form-control"
+            ngModel="{{ user?.email }}"
+            [(ngModel)]="email"
             placeholder="Entrez votre Email"
             disable
           />
@@ -101,9 +76,9 @@ fin-popub
         <div class="form-group">
           <label for="username">Username</label>
           <input
-            ngModel="{{ user.username }}"
+            ngModel="{{ user?.username }}"
             type="text"
-            class="form-control"
+            [(ngModel)]="username"
             name="username"
             id="username"
             placeholder="Username"

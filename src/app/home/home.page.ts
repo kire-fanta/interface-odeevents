@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../Service/users.service';
 import { TokenstorageService } from '../tokenstorage.service';
@@ -8,7 +8,7 @@ import { TokenstorageService } from '../tokenstorage.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit, OnDestroy {
   errorMessage = '';
   roles: string[] = [];
   form: any = {
@@ -22,6 +22,14 @@ export class HomePage {
     private authService: UsersService,
     private tokenStorage: TokenstorageService
   ) {}
+  ngOnInit(): void {
+    if (this.isLoggedIn === true) {
+      this.route.navigateByUrl('/tabs/accueil');
+    }
+  }
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
   onSubmit(): void {
     const { username, password } = this.form;
 
@@ -39,6 +47,7 @@ export class HomePage {
         //   this.isLoginFailed = true;
         // }
         this.route.navigate(['tabs/accueil']);
+        this.ngOnDestroy();
       },
       (err) => {
         this.isLoginFailed = true;
