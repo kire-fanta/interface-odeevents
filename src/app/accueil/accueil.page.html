@@ -45,27 +45,24 @@
     <ion-segment-button value="past"> Evénements passés rsydtfyyyyyyyyyyyyyyyyyyyyyy</ion-segment-button>
   </ion-segment> -->
     <div class=" " [ngSwitch]="selectedSegment">
-      <div
-        *ngSwitchCase="'upcoming'"
-        class="CC"
-        style="width: 96%; margin-left: -2%"
-      >
-        <div class="container">
-          <ion-card *ngFor="let event of upcomingEvents, let i=index">
-            
-            <ion-card-header>
-              <ion-card-title>{{event.nomEvenement}} </ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-                            <img src="{{event.image}}" />
+    
+      <div *ngSwitchCase="'upcoming'">
+        <ion-card *ngFor="let event of upcomingEvents, let i=index">
+          <!-- <ion-thumbnail slot="start">
+            <img src="{{event.image}}" />
+          </ion-thumbnail> -->
+          <img src="{{event.image}}" />
 
-              <p>description de l'événement : {{event.description}}</p>
+          <ion-card-header>
+            <ion-card-title>{{event.nomEvenement}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>description de l'événement : {{event.description}}</p>
+
             <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
-
-            </ion-card-content>
-          </ion-card>
-          <h1 style="height: 25vh"></h1>
-        </div>
+          </ion-card-content>
+        </ion-card>
+        <h1 style="height: 25vh"></h1>
       </div>
       <div *ngSwitchCase="'past'">
         <ion-card *ngFor="let event of pastEvents">
@@ -79,7 +76,7 @@
           </ion-card-header>
           <ion-card-content>
             <p>description de l'événement : {{event.description}}</p>
-            
+
             <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
           </ion-card-content>
         </ion-card>
@@ -87,10 +84,7 @@
       </div>
 
       <div *ngSwitchCase="'current'">
-        <ion-card
-          *ngFor="let event of currentEvents"
-        >
-          
+        <ion-card *ngFor="let event of currentEvents">
           <img src="{{event.image}}" />
 
           <ion-card-header>
@@ -98,13 +92,12 @@
           </ion-card-header>
           <ion-card-content>
             <p>description de l'événement : {{event.description}}</p>
-                        <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
-
+            <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
           </ion-card-content>
         </ion-card>
         <h1 style="height: 25vh"></h1>
 
-<!-- 
+        <!-- 
         <ion-card *ngFor="let event1 of pastEvents">
                     <img src="{{event1.image}}" />
 

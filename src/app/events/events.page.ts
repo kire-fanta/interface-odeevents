@@ -5,6 +5,7 @@ import { NotifComponent } from '../notif/notif.component';
 import { ModalComponent } from '../organization-settings-modal/modal.component';
 import { EventsService } from '../Service/events.service';
 import { StatusService } from '../Service/status.service';
+import { UsersService } from '../Service/users.service';
 import { TokenstorageService } from '../tokenstorage.service';
 
 @Component({
@@ -37,6 +38,7 @@ export class EventsPage implements OnInit {
   id_status: any;
   datefin: any;
   datedebut: any;
+  users: any;
 
   constructor(
     private pvrCtlr: PopoverController,

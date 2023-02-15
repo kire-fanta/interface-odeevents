@@ -31,6 +31,9 @@ export class UsersService {
   getOneUserById(id: number): Observable<User> {
     return this.http.get<User>(`http://localhost:8080/user/${id}`);
   }
+  getAllUser(): Observable<User[]> {
+    return this.http.get<User[]>(`http://localhost:8080/user/all`);
+  }
 
   logout(): void {
     this.tokenStorage.signOut();

@@ -20,12 +20,15 @@
       <ion-card-title>{{ event.nomEvenement }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Date de l'événement : {{event.date | date : 'dd/MM/yyyy'}}</p>
-      <p>Budget total: {{ budgettotal }}</p>
+      <p>Date de l'événement : {{event.datedebut | date : 'dd/MM/yyyy'}}</p>
+      <p>Budget total: {{ mont }}</p>
     </ion-card-content>
-    <ion-item  class="icongroup">
+    <ion-item class="icongroup">
       <ion-icon name="trash-outline"></ion-icon>
-      <ion-icon name="create-outline" (click)="goToEventDetails(event)"></ion-icon>
+      <ion-icon
+        name="create-outline"
+        [routerLink]="['/event-details',event.idEvenement]">
+      ></ion-icon>
     </ion-item>
   </ion-card>
 

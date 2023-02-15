@@ -38,7 +38,7 @@ const routes: Routes = [
       import('./ebudget/ebudget.module').then((m) => m.EbudgetPageModule),
   },
   {
-    path: 'event-details',
+    path: 'event-details/:id',
     loadChildren: () =>
       import('./event-details/event-details.module').then(
         (m) => m.EventDetailsPageModule

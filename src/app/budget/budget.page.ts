@@ -27,29 +27,26 @@ import { EventsService } from '../Service/events.service';
   providers: [BudgetService],
 })
 export class BudgetPage implements OnInit {
-
-
   // ngOnInit(): void {
   //   throw new Error('Method not implemented.');
   // }
   prevision: any;
   events: any;
   budgettotal: any;
+  mont = 0;
 
   constructor(
     private eventsService: EventsService,
     private budgetService: BudgetService,
     private router: Router,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private evenetService:EventsService
   ) {}
 
   ngOnInit() {
-    // this.budgetService
-    //   .calculerDepense(this.budgettotal.id)
-    //   .subscribe((data) => {
-    //     this.budgettotal = data;
-    //   });
-    this.getAllPrevisions();
+    // Arret
+    this.getEventById(2)
+       this.getAllPrevisions();
     this.getAllEvents();
   }
 
@@ -77,16 +74,28 @@ export class BudgetPage implements OnInit {
     this.budgetService.getEvens().subscribe((Events) => {
       this.events = Events;
       for (let a of this.events) {
-        console.log('ffff ' + a.nomEvenement);
+        console.log('ffff ' + a.idEvenement);
       }
     });
   }
 
-  goToEventDetails(event: any) {
-    this.navCtrl.navigateForward('event-details', {
+  goToEventDetails(event: any, idevent: any) {
+    this.navCtrl.navigateForward('event-details/' + idevent, {
       queryParams: {
         event: event,
       },
     });
+  }
+
+  // les budgets pqr id
+
+  getEventById(idbudget:any){
+    this.evenetService.getbudgetbyevent(idbudget).subscribe(data=>{
+      for(let m of data){
+        this.mont += m.prixUnitaire * m.quantite;
+
+      }
+      console.log('Ev3 ' + this.mont);
+    })
   }
 }

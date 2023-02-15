@@ -1,20 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="primary" class="notiff">
-      <ion-button (click)="opennotif()" fill="clear">
-        <ion-icon class="not" name="notifications-outline"></ion-icon>
-        <ion-badge>3</ion-badge>
-      </ion-button>
-    </ion-buttons>
-    <ion-button id="popover-button">
-      <i class="bi bi-three-dots"></i>
-    </ion-button>
+    <div class="" style="display: flex;">
 
-    <ion-buttons>
-      <ion-button id="popoverI-button">
-        <ion-icon name="ellipsis-horizontal"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+     <ion-buttons>
+        <ion-button id="popoverI-button" style="margin-top: 1%;">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <style>
+        img{
+          width: 100%;
+          margin-left: -2%;
+          height: 50%;
+        }
+      </style>
+      <div class="" >
+
+        <img src="../assets/IMAGE/ok.png"  alt="" />
+      </div>
+      <!-- <ion-button id="popover-button">
+        <i class="bi bi-three-dots"></i>
+      </ion-button> -->
+       
+  
+      
+
+       <ion-buttons slot="primary" class="notiff">
+        <ion-button (click)="opennotif()" fill="clear">
+          <ion-icon class="not" name="notifications-outline"></ion-icon>
+          <ion-badge>3</ion-badge>
+        </ion-button>
+      </ion-buttons>
+    </div>
 
     <!-- popup -->
     <ion-popover trigger="popoverI-button" [dismissOnSelect]="true">

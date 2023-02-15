@@ -29,6 +29,12 @@ export class EventsService {
     return this.http.get('http://localhost:8080/evenements/all/');
   }
 
+  getbudgetbyevent(id: number): Observable<any> {
+    return this.http.get(
+      `http://localhost:8080/previsions-depenses/recuperer/${id}`
+    );
+  }
+
   ajouterEvenement(
     description: any,
     nom: string,
@@ -95,5 +101,18 @@ export class EventsService {
     data.append('heureDebut', heureDebut);
 
     return this.http.post<Event>(`http://localhost:8080/add/${id_user}`, data);
+  }
+
+  deleteEvent(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8080/evenements/delete/${id}`);
+  }
+  // modifierEvent(id: number): Observable<any> {
+  //   return this.http.update(`http://localhost:8080/evenements/update/${id}`);
+  // }
+  modifierEvent(id: number, eventData: any): Observable<any> {
+    return this.http.put(
+      'http://localhost:8080/evenements/update/${id}',
+      eventData
+    );
   }
 }
