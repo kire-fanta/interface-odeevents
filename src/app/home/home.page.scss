@@ -112,6 +112,7 @@ h6 span {
   height: 100%;
   background-color: #2a2b38;
   background-image: url("https://img.freepik.com/photos-premium/gros-plan-calendrier-bureau-affaires-concept-equipement-bureau-planificateur-evenements-rappel-organisation-personnelle-calendrier-planification_619210-495.jpg?size=626&ext=jpg&ga=GA1.2.337706935.1668301615&semt=sph");
+
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -149,7 +150,7 @@ h6 span {
   margin: 0;
   padding: 0;
 }
-.form-style {
+.form-control {
   padding: 13px 20px;
   padding-left: 55px;
   height: 48px;
@@ -168,8 +169,8 @@ h6 span {
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
   margin-bottom: 10%;
 }
-.form-style:focus,
-.form-style:active {
+.form-control:focus,
+.form-control:active {
   border: none;
   outline: none;
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);

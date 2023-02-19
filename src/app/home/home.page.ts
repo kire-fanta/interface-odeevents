@@ -20,7 +20,8 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(
     private route: Router,
     private authService: UsersService,
-    private tokenStorage: TokenstorageService
+    private tokenStorage: TokenstorageService,
+    private userService: UsersService
   ) {}
   ngOnInit(): void {
     if (this.isLoggedIn === true) {
@@ -30,6 +31,14 @@ export class HomePage implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
+
+  onSubmit1(): void {
+    const { nom, prenom, username, email, password } = this.form;
+    this.userService.register(nom,prenom,username, email, password).subscribe((data)=> {
+      console.log(data);
+    })
+  }
+
   onSubmit(): void {
     const { username, password } = this.form;
 
@@ -55,4 +64,8 @@ export class HomePage implements OnInit, OnDestroy {
       }
     );
   }
+
+
+
+  
 }

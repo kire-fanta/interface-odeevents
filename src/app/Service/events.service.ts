@@ -37,13 +37,13 @@ export class EventsService {
 
   ajouterEvenement(
     description: any,
-    nom: string,
+    nomEvenement: string,
     lieu: string,
     etat: string,
     duree: any,
     status: string,
     image: string,
-    type: string,
+    typeEvenement: string,
 
     id_user: any,
     id_status: any,
@@ -52,16 +52,21 @@ export class EventsService {
     datedebut: any,
     datefin: any
   ): Observable<Event> {
+
+
+    
+
+
     const data = new FormData();
     data.append('file', image);
     data.append('description', description);
     data.append('heurefin', heureFin);
-    data.append('nom', nom);
+    data.append('nomEvenement', nomEvenement);
     data.append('lieu', lieu);
     //data.append('etat', etat);
     data.append('duree', duree);
     data.append('status', status);
-    data.append('type', type);
+    data.append('typeEvenement', typeEvenement);
     data.append('datedebut', datedebut);
     data.append('datefin', datefin);
     data.append('heuredebut', heureDebut);

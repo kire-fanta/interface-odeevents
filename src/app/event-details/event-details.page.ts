@@ -42,6 +42,8 @@ export class EventDetailsPage implements OnInit {
   getbudgetbyevent: any;
   budgetsUn: any;
   idev: any;
+  montant = 0;
+  monTotal = 0;
 
   // Injection de dépendance de la classe ActivatedRoute
   constructor(
@@ -66,11 +68,16 @@ export class EventDetailsPage implements OnInit {
 
       this.eventServic.getbudgetbyevent(this.idev).subscribe((data) => {
         this.budgetsUn = data;
+         for (let total of this.budgetsUn) {
+           this.montant = total.prixUnitaire * total.quantite;
+           this.monTotal += this.montant 
+         }
       });
 
       // Utilisation de la méthode getBudgets de BudgetService pour récupérer les détails budgétaires de l'événement
       this.eventService.getBudgetss(this.event.id).subscribe((data) => {
         this.budget = data;
+       
       });
     });
   }

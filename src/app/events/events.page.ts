@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { NotifComponent } from '../notif/notif.component';
 import { ModalComponent } from '../organization-settings-modal/modal.component';
 import { EventsService } from '../Service/events.service';
+import { SallesService } from '../Service/salles.service';
 import { StatusService } from '../Service/status.service';
 import { UsersService } from '../Service/users.service';
 import { TokenstorageService } from '../tokenstorage.service';
@@ -39,13 +40,14 @@ export class EventsPage implements OnInit {
   datefin: any;
   datedebut: any;
   users: any;
-
+  mesSalles: any;
   constructor(
     private pvrCtlr: PopoverController,
     private eventsservice: EventsService,
     private service: TokenstorageService,
     private eventsService: EventsService,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private salleservices: SallesService
   ) {}
 
   // isVisible = true;
@@ -58,12 +60,25 @@ export class EventsPage implements OnInit {
   televerser(event: any) {
     this.image = event.target['files'][0];
     console.log(this.image);
+
+  
+
   }
+
+  // ngOnInit() {
+  //   this.salleservices.getSalles().subscribe((data) => {
+  //     this.mesSalles = data;
+  //   });
+  // }
+
   ngOnInit() {
     console.log('locationnnnn');
     this.user = this.service.getUser();
     this.statusService.GetAllStatus().subscribe((data) => {
       this.status = data;
+    });
+    this.salleservices.getsallbydisponibilite(1).subscribe((data) => {
+      this.mesSalles = data;
     });
   }
 
@@ -95,17 +110,20 @@ export class EventsPage implements OnInit {
         this.datedebut,
         this.datefin
       )
+
       .subscribe((data) => {
         console.log(data);
         Swal.fire({
           heightAuto: false,
           // position: 'top-end',
           icon: 'success',
-          text: 'Compte créer avec succès',
+          text: 'Evénement ajouté avec succès',
           showConfirmButton: false,
           timer: 2500,
         });
       });
+      this.location = 'inside';
+
     // async openModal() {
     //   const popup = await this.pvrCtlr.create({
     //     component: ModalComponent,

@@ -28,6 +28,27 @@ export class UsersService {
       httpOptions
     );
   }
+
+  register(
+    nom: string,
+    prenom: string,
+    username: string,
+    email: string,
+    password: string
+  ): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'inscrire',
+      {
+        nom,
+        prenom,
+        username,
+        email,
+        password,
+      },
+      httpOptions
+    );
+  }
+
   getOneUserById(id: number): Observable<User> {
     return this.http.get<User>(`http://localhost:8080/user/${id}`);
   }
@@ -56,5 +77,27 @@ export class UsersService {
     data.append('email', email);
 
     return this.http.put(`http://localhost:8080/user/update/${id}`, data);
+  }
+
+  ChangerMdp(
+    currentpassword: any,
+    newpassword: any,
+    confirmpassword: any,
+    email: any
+  ): Observable<any> {
+    // let data = new FormData();
+    // data.append("jour",jourRdv)
+    // data.append("heure",heureRdv)
+    // data.append("objetRdv",objetRdv)
+    const data = {
+      currentpassword: currentpassword,
+      newpassword: newpassword,
+      confirmpassword: confirmpassword,
+    };
+
+    return this.http.post(
+      `http://localhost:8080/api/auth/changePassword/${email}`,
+      data
+    );
   }
 }

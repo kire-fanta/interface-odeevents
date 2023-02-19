@@ -22,14 +22,20 @@ export class SallesService {
     return this.http.get<Salle[]>(this.urlbase + 'salles/afficher');
   }
 
+  getsallbydisponibilite(status:any): Observable<Salle[]> {
+    return this.http.get<Salle[]>(
+      this.urlbase + `salles/disponibilite/${status}`
+    );
+
+   } 
   getSalle(id: number): Observable<Salle> {
     const url = `${this.sallesUrl}/${id}`;
     return this.http.get<Salle>(url);
   }
 
-  updateSalle(salle: Salle): Observable<Salle> {
-    return this.http.put<Salle>(this.sallesUrl, salle);
-  }
+  // updateSalle(salle: Salle): Observable<any> {
+  //   return this.http.put<Salle>(this.urlbase + `salle/${id}`);
+  // }
 
   addSalle(
     image: File,
@@ -51,12 +57,12 @@ export class SallesService {
     return this.http.post<Salle>(`http://localhost:8080/salles/add`, data);
   }
 
-  deleteSalle(salle: Salle | number): Observable<any> {
-    const id = typeof salle === 'number' ? salle : salle.id;
-    const url = `${this.sallesUrl}/${id}`;
+  // deleteSalle(salle: Salle | number): Observable<any> {
+  //   const id = typeof salle === 'number' ? salle : salle.id;
+  //   const url = `${this.sallesUrl}/${id}`;
 
-    return this.http.delete<Salle>(`http://localhost:8080/salles/${id}`);
-  }
+  //   return this.http.delete<Salle>(`http://localhost:8080/salles/${id}`);
+  // }
 
   deletesall(id: number): Observable<any> {
     

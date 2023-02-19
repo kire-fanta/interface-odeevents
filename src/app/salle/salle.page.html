@@ -22,23 +22,47 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="opennotif()" fill="clear">
+  <ion-button (click)="opennotif()"  class="butonevents" >
     Ajouter une salle
   </ion-button>
-  <ion-list>
-    <ion-item *ngFor="let salle of mesSalles">
-      <ion-thumbnail slot="start">
-        <img src="{{salle.image}}" />
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{salle.nom}}</h2>
-        <p>{{salle.description}}</p>
-        <p>Nombre de place: {{salle.nombreplace}}</p>
-        <p>Etage: {{salle.etage}}</p>
-        <p>Numero: {{salle.numero}}</p>
-        <p *ngIf="salle.disponibilite===true">Disponibilité: Oui</p>
-        <p *ngIf="salle.disponibilite===false">Disponibilité: Non</p>
-        <ion-icon name="trash-outline" (click)="supprimer(salle.id)"></ion-icon>
-      </ion-label>
-    </ion-item> </ion-list
+  <ion-card *ngFor="let salle of mesSalles">
+    <!-- <ion-thumbnail slot="start"> -->
+    <img src="{{salle.image}}" />
+    <!-- </ion-thumbnail> -->
+    <ion-header>
+      <ion-card-title class="o">{{salle.libelle}}</ion-card-title>
+    </ion-header>
+    <ion-card-content>
+      <p>
+        <span class="o"> description de la salle :</span>{{salle.description}}
+      </p>
+      <p><span class="o">Nombre de place:</span> {{salle.nombreplace}}</p>
+      <p><span class="o">Etage:</span> {{salle.etage}}</p>
+      <p><span class="o">Numero: </span>{{salle.numero}}</p>
+      <p *ngIf="salle.disponibilite===true">
+        Disponibilité:<span class="o">Oui</span>
+      </p>
+      <p *ngIf="salle.disponibilite===false">
+        Disponibilité:<span class="o"> Non</span>
+      </p>
+ <ion-item class="icongroup">
+      <ion-icon name="trash-outline" (click)="supprimer(salle.id)"></ion-icon>
+       <ion-icon name="create-outline"></ion-icon>
+       </ion-item>
+    </ion-card-content> </ion-card
 ></ion-content>
+<!-- <ion-thumbnail slot="start">
+            <img src="{{event.image}}" />
+          </ion-thumbnail> -->
+<!-- <img src="{{event.image}}" />
+
+          <ion-card-header>
+            <ion-card-title class="o">{{event.nomEvenement}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h3 ><span class="u">description de l'événement :</span> {{event.description}}</h3>
+
+            <h4 ><span class="o">  Date début :</span> {{event.datedebut | date : 'dd/MM/yyyy'}}</h4>
+            <H4><span class="o">Date fin:</span> {{event.datefin | date : 'dd/MM/yyyy'}}</H4>
+          </ion-card-content>
+        </ion-card> -->

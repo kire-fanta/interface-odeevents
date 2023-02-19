@@ -60,7 +60,7 @@
                               required
                               #username="ngModel"
                               type="text"
-                              class="form-style"
+                              class="form-control"
                               placeholder=" Nom"
                               id="logemail"
                               autocomplete="off"
@@ -76,7 +76,7 @@
                               required
                               #password="ngModel"
                               type="password"
-                              class="form-style"
+                              class="form-control"
                               placeholder=" Mot de passe "
                               id="logpass"
                               autocomplete="off"
@@ -101,61 +101,99 @@
                   <div class="card-back">
                     <div class="center-wrap">
                       <div class="section text-center">
+                   
+                        <form
+                        
+                          name="form"
+                          (ngSubmit)="f.form.valid && onSubmit1()"
+                          #f="ngForm"
+                          novalidate
+                        >
                         <h4 class="mb-4 pb-3">Inscription</h4>
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            name="logname"
-                            class="form-style"
-                            placeholder=" Nom"
-                            id="logname"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-user"></i>
-                        </div>
+                    
                         <div class="form-group mt-2">
                           <input
-                            type="email"
-                            name="logemail"
-                            class="form-style"
-                            placeholder="Email"
-                            id="logemail"
+                            type="text"
+                            name="nom"
+                            class="form-control"
+                            placeholder="Nom"
+                            [(ngModel)]="form.nom"
+                           required
+                           minlength="3"
+                           maxlength="20"
+                           #nom="ngModel"
                             autocomplete="off"
                           />
                           <i class="input-icon uil uil-at"></i>
                         </div>
-                        <div class="form-group mt-2">
+
+                          <div class="form-group mt-2">
                           <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder="Mot de passe "
-                            id="logpass"
+                            type="text"
+                            name="prenom"
+                            class="form-control"
+                            placeholder="Prenom"
+                            [(ngModel)]="form.prenom"
+                           required
+                           minlength="3"
+                           maxlength="20"
+                           #prenom="ngModel"
                             autocomplete="off"
                           />
-                          <i class="input-icon uil uil-lock-alt"></i>
+                          <i class="input-icon uil uil-at"></i>
                         </div>
 
                         <div class="form-group mt-2">
                           <input
-                            ngModel
-                            autofocus
-                            name="usernameOrEmail"
-                            [(ngModel)]="form.username"
-                            required
-                            #usernameOrEmail="ngModel"
-                            type="role"
-                            name="role"
-                            class="form-style"
-                            placeholder=" role "
-                            id="logrole"
+                            type="text"
+                            name="username"
+                            class="form-control"
+                            placeholder="Username"
+                             [(ngModel)]="form.username"
+                           required
+                           minlength="3"
+                           maxlength="20"
+                           #username="ngModel"
                             autocomplete="off"
                           />
-                          <i class="input-icon uil uil-lock-alt"></i>
+                          <i class="input-icon uil uil-at"></i>
                         </div>
-                        <a href="#" class="btn mt-4 "routerLink="/tabs/accueil"
-                          >Envoyera</a
-                        >
+
+                        <div class="form-group mt-2">
+                          <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            placeholder="Email"
+                             [(ngModel)]="form.email"
+                           required
+                           #email="ngModel"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-at"></i>
+                        </div>
+
+                        
+                        <div class="form-group mt-2">
+                          <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Mot de Passe"
+                             [(ngModel)]="form.password"
+                           required
+                           minlength="6"
+                           #password="ngModel"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-at"></i>
+                        </div>
+
+                        <div>
+                          <button class="btn mt-4" type="submit"> S'inscrire</button>
+                      
+                        </div>
+                      </form>
                       </div>
                     </div>
                   </div>

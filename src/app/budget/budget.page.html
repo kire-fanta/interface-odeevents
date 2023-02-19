@@ -7,28 +7,32 @@
 <ion-content>
 
 </ion-content> -->
-
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Prévisions budgétaires</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-card *ngFor="let event of events">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Prévisions budgétaires</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button class="butonevents" routerLink="./events">
+    Ajout budget</ion-button
+  >
+  <ion-card *ngFor="let event of events , let i = index">
     <ion-card-header>
       <ion-card-title>{{ event.nomEvenement }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>Date de l'événement : {{event.datedebut | date : 'dd/MM/yyyy'}}</p>
-      <p>Budget total: {{ mont }}</p>
+      <p>Budget total: {{ Tableau[i] }}</p>
     </ion-card-content>
     <ion-item class="icongroup">
       <ion-icon name="trash-outline"></ion-icon>
       <ion-icon
         name="create-outline"
-        [routerLink]="['/event-details',event.idEvenement]">
-      ></ion-icon>
+        [routerLink]="['/event-details',event.idEvenement]"
+      >
+        </ion-icon
+      >
     </ion-item>
   </ion-card>
 
@@ -52,8 +56,12 @@
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       (click)="ajouterPrevision()" -->
-  <ion-icon name="add"></ion-icon>
+
+
+  <!-- <ion-icon name="add"></ion-icon> -->
+
+  
   <!-- </ion-fab-button>
   </ion-fab> -->
-  -->
+
 </ion-content>

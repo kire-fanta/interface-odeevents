@@ -40,16 +40,17 @@ export class SallePage implements OnInit {
   supprimer(id: number){
       this.salleservices.deletesall(id).subscribe(data =>{
         Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          // title: 'Are you sure?',
+          text: 'Voulez-vous supprimer cette salle  ?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!',
+          confirmButtonText: 'Oui',
+          cancelButtonText: 'Non', // ajout du bouton "Non"
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire('Votre salle  a été supprimé avec success');
           }
         });
           location.reload();

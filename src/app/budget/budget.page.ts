@@ -17,6 +17,7 @@ import { Component, OnInit } from '@angular/core';
 // import { BudgetService } from '../Service/budget.service';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import events from 'inquirer/lib/utils/events';
 import { BudgetService } from '../Service/budget.service';
 import { EventsService } from '../Service/events.service';
 
@@ -35,6 +36,9 @@ export class BudgetPage implements OnInit {
   budgettotal: any;
   mont = 0;
 
+  Tableau :any = [] 
+  totaux = 0;
+
   constructor(
     private eventsService: EventsService,
     private budgetService: BudgetService,
@@ -45,7 +49,7 @@ export class BudgetPage implements OnInit {
 
   ngOnInit() {
     // Arret
-    this.getEventById(2)
+    // this.getEventById(2)
        this.getAllPrevisions();
     this.getAllEvents();
   }
@@ -74,8 +78,26 @@ export class BudgetPage implements OnInit {
     this.budgetService.getEvens().subscribe((Events) => {
       this.events = Events;
       for (let a of this.events) {
-        console.log('ffff ' + a.idEvenement);
+        console.log('ID ' + a.idEvenement);
+        //  this.getEventById(a.idEvenement);
+
+        
       }
+      for(let b of this.events){
+         this.evenetService
+           .getbudgetbyevent(b.idEvenement)
+           .subscribe((data) => {
+              for (let m of data) {
+                this.mont = m.prixUnitaire * m.quantite;
+                this.totaux += this.mont
+                this.Tableau.push(this.totaux)
+
+              }
+           });
+      }
+      
+              console.log('Ev3 ' + this.Tableau);
+        
     });
   }
 
@@ -89,13 +111,13 @@ export class BudgetPage implements OnInit {
 
   // les budgets pqr id
 
-  getEventById(idbudget:any){
-    this.evenetService.getbudgetbyevent(idbudget).subscribe(data=>{
-      for(let m of data){
-        this.mont += m.prixUnitaire * m.quantite;
+  // getEventById(idbudget:any){
+  //   this.evenetService.getbudgetbyevent(idbudget).subscribe(data=>{
+  //     for(let m of data){
+  //       this.mont += m.prixUnitaire * m.quantite;
 
-      }
-      console.log('Ev3 ' + this.mont);
-    })
-  }
+  //     }
+  //     console.log('Ev3 ' + this.mont);
+  //   })
+  // }
 }

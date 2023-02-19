@@ -13,7 +13,9 @@
 // ion-segment-button:hover {
 //   color: red;
 // }
-
+.o{
+  color: #ff6600;
+}
 ion-segment-button {
   --color: black;
   font-size: 50%;
@@ -35,9 +37,12 @@ ion-segment-button {
 //   background-color: rgb(246, 248, 250);
 // }
 
-.CC{
+.CC {
   margin-left: auto;
   margin-right: auto;
-
-  
+}
+.u {
+  font-size: 17px;
+  font-weight: bold;
+  color: #000000;
 }

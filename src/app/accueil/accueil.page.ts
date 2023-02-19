@@ -10,10 +10,10 @@ import { EventsService } from '../Service/events.service'; // importe le modèle
   styleUrls: ['./accueil.page.scss'],
 })
 export class AccueilPage implements OnInit {
-  currentEvents: Event[] = [];
-  upcomingEvents: Event[] = [];
-  pastEvents: Event[] = [];
-  allEvents!: Event[];
+  currentEvents: any[] = [];
+  upcomingEvents:any;
+  pastEvents: any[] = [];
+  allEvents!: any[];
   list: any;
   state: any;
   selectedSegment: string | undefined;
