@@ -18,6 +18,7 @@ export class EventsPage implements OnInit {
   user: any;
 
   location: string = 'inside';
+  location1:any;
   rooms: string[] = ['Salle 1', 'Salle 2', 'Salle 3'];
 
   nom: any;
@@ -60,9 +61,6 @@ export class EventsPage implements OnInit {
   televerser(event: any) {
     this.image = event.target['files'][0];
     console.log(this.image);
-
-  
-
   }
 
   // ngOnInit() {
@@ -82,16 +80,23 @@ export class EventsPage implements OnInit {
     });
   }
 
-  onLocationChange(location: string) {
-    this.location = location;
+  onLocationChange(location: any) {
+    this.location1 = location.detail.value;
+    console.log(location.detail.value);
   }
 
   onRoomChange(event: any) {
     console.log(event);
+    this.location1 = event.detail.value;
     // Faites quelque chose avec la salle sélectionnée
   }
 
   ajouterEvenement() {
+    if(this.location1 == 'outside'){
+      this.lieu = this.location
+    }else{
+      this.lieu = this.location1
+    }
     console.log('ajouterEvenement');
     this.eventsservice
       .ajouterEvenement(
@@ -122,7 +127,7 @@ export class EventsPage implements OnInit {
           timer: 2500,
         });
       });
-      this.location = 'inside';
+    this.location = 'inside';
 
     // async openModal() {
     //   const popup = await this.pvrCtlr.create({

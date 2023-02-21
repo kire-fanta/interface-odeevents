@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="image">
+      <img src="../assets/IMAGE/ok.png" alt="" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="evenementSelectionne, ">
+    <img src="{{evenementSelectionne.image}}" class="top" alt="..." />
+
+    <ion-card-header>
+      <ion-card-title class="u">{{ evenementSelectionne.nomEvenement }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="card">
+      <!-- <p>Date de l'événement : {{ evenementSelectionne.datedebut | date : 'dd/MM/yyyy' }}</p> -->
+      <!-- <p>Budget total:   {{ Tableau[i] }} </p> -->
+      <h2> <span class="o">Description</span> : {{ evenementSelectionne.description }}</h2>
+      <h2 > <span class="o">Lieu </span>: {{ evenementSelectionne.lieu }}</h2>
+      <H2> <span class="o">Type</span> : {{ evenementSelectionne.typeEvenement }}</H2>
+      <!-- Ajouter plus d'informations sur l'événement ici -->
+      <div  class="bas">
+      <h4>
+        <span class="o"> Date début :</span> {{evenementSelectionne.datedebut |
+        date : 'dd/MM/yyyy'}}
+      </h4>
+
+      <h4>
+        <span class="o">Date fin:</span> {{evenementSelectionne.datefin | date :
+        'dd/MM/yyyy'}}
+      </h4>
+      </div>
+
+      <h1 style="height: 25vh"></h1>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

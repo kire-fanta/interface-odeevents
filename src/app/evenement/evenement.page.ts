@@ -9,6 +9,10 @@ import { EventsService } from '../Service/events.service';
 })
 export class EvenementPage implements OnInit {
   all: any;
+  public evenementSelectionne: any;
+  Tableau: any = [];
+ 
+
   // Tableau qui contiendra les informations sur les événements
   // events = [
   //   {
@@ -42,7 +46,9 @@ export class EvenementPage implements OnInit {
       console.log('mes events: ' + JSON.stringify(this.all));
     });
   }
-
+  // voirDetails(idEvement: number) {
+  //   // Ajoutez le code ici pour rediriger l'utilisateur vers la page de détails de l'événement
+  // }
   supprimer(id: number) {
     this.eventsService.deleteEvent(id).subscribe((data) => {
       Swal.fire({

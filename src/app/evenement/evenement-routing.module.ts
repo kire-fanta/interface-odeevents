@@ -8,7 +8,12 @@ const routes: Routes = [
     path: '',
     component: EvenementPage
   }
+  //  , {
+  //   path: 'evenement-detail/:id',
+  //   loadChildren: () => import('../evenement-detail/evenement-detail.module').then( m => m.EvenementDetailPageModule)
+  // }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

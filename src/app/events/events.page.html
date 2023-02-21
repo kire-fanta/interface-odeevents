@@ -226,35 +226,41 @@
 
     <ion-item>
       <ion-label>Lieu</ion-label>
-      <ion-select [(ngModel)]="location">
-   
-
-
-        <ion-select-option value="inside" (ionSelect)="onLocationChange('inside')">Au siège</ion-select-option>
-<ion-select-option value="outside" (ionSelect)="onLocationChange('outside')">A l'extérieur</ion-select-option>
-
+      <ion-select [(ngModel)]="location" (ionChange)="onLocationChange($event)">
+        <ion-select-option
+          value="inside"
+          
+          >Au siège</ion-select-option
+        >
+        <ion-select-option
+          value="outside"
+          (ionSelect)="onLocationChange('outside')"
+          >A l'extérieur</ion-select-option
+        >
       </ion-select>
     </ion-item>
-    <ion-item *ngIf="location === 'inside'">
+     
+    <ion-item *ngIf="location1 === 'inside'">
       <ion-label position="floating">Salle</ion-label>
       <ion-select (ionChange)="onRoomChange($event)">
-        <ion-select-option *ngFor="let salle of mesSalles"
+        <ion-select-option *ngFor="let salle of mesSalles" value="{{salle.libelle}}"
           >{{salle.libelle}}
         </ion-select-option>
       </ion-select>
     </ion-item>
-<!-- 
+
+    <!-- 
     <ion-item *ngIf="location === 'outside'">
       <ion-label position="floating">Géolocalisation</ion-label>
       <ion-input type="text"></ion-input>
     </ion-item> -->
-    <ion-item *ngIf="location === 'outside'">
-<ion-label position="floating">Adresse</ion-label>
-<ion-input type="text" [(ngModel)]="location"></ion-input>
-<ion-button (click)="location='outside'">Ajouter</ion-button>
-</ion-item>
- <!-- test -->
-<!-- <ion-item *ngIf="location === 'inside'">
+    <ion-item *ngIf="location1 === 'outside'">
+      <ion-label position="floating">Adresse</ion-label>
+      <ion-input type="text" name="location" [(ngModel)]="location"></ion-input>
+      <!-- <ion-button (click)="location='outside'">Ajouter</ion-button> -->
+    </ion-item>
+    <!-- test -->
+    <!-- <ion-item *ngIf="location === 'inside'">
       <ion-label position="floating">Salle</ion-label>
       <ion-select (ionChange)="onRoomChange($event)">
         <ion-select-option *ngFor="let room of rooms" [value]="room"
@@ -265,11 +271,10 @@
 
     <ion-item *ngIf="location === 'outside'">
       <ion-label position="floating">Géolocalisation</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-input type="text"></ion-input> </ion-item
+    >
     <!-- test -->
 
-  
     <ion-item>
       <ion-label for="image" position="floating">Image</ion-label>
       <ion-input

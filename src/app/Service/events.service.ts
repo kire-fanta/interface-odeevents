@@ -34,6 +34,9 @@ export class EventsService {
       `http://localhost:8080/previsions-depenses/recuperer/${id}`
     );
   }
+  getEvenementById(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/evenements/${id}`);
+  }
 
   ajouterEvenement(
     description: any,
@@ -52,11 +55,6 @@ export class EventsService {
     datedebut: any,
     datefin: any
   ): Observable<Event> {
-
-
-    
-
-
     const data = new FormData();
     data.append('file', image);
     data.append('description', description);
