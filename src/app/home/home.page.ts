@@ -17,6 +17,7 @@ export class HomePage implements OnInit, OnDestroy {
   };
   isLoginFailed = false;
   isLoggedIn = false;
+  memoire = localStorage.getItem('logge');
   constructor(
     private route: Router,
     private authService: UsersService,
@@ -24,6 +25,11 @@ export class HomePage implements OnInit, OnDestroy {
     private userService: UsersService
   ) {}
   ngOnInit(): void {
+    if (this.memoire == 'true') {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
     if (this.isLoggedIn === true) {
       this.route.navigateByUrl('/tabs/accueil');
     }
@@ -34,9 +40,11 @@ export class HomePage implements OnInit, OnDestroy {
 
   onSubmit1(): void {
     const { nom, prenom, username, email, password } = this.form;
-    this.userService.register(nom,prenom,username, email, password).subscribe((data)=> {
-      console.log(data);
-    })
+    this.userService
+      .register(nom, prenom, username, email, password)
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 
   onSubmit(): void {
@@ -49,14 +57,14 @@ export class HomePage implements OnInit, OnDestroy {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        localStorage.setItem('logge', 'true');
         this.roles = this.tokenStorage.getUser().roles;
-        // if (this.isLoggedIn == true)
-        //   this.route.navigateByUrl("['tabs/accueil']");
-        // else {
-        //   this.isLoginFailed = true;
-        // }
+        if (this.isLoggedIn == true)
         this.route.navigate(['tabs/accueil']);
-        this.ngOnDestroy();
+        else {
+          this.isLoginFailed = true;
+        }
+        
       },
       (err) => {
         this.isLoginFailed = true;
@@ -64,8 +72,4 @@ export class HomePage implements OnInit, OnDestroy {
       }
     );
   }
-
-
-
-  
 }

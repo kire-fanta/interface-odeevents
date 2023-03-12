@@ -10,10 +10,10 @@
   <div class="container mx-auto mt-4">
     <ion-card class="row" *ngFor="let tout of all">
       <div class="col-md-4">
-        <div class="card" style="width: 18rem">
+        <div class="card">
           <img src="{{tout.image}}" class="top" alt="..." />
           <div class="card-body">
-            <h5 class="ion-text-center" class="U">{{tout.nomEvenement}}</h5>
+            <h5 class="ion-text-center" class="bold">{{tout.nomEvenement}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               {{tout.date | date : 'dd/MM/yyyy'}}
             </h6>
@@ -30,63 +30,6 @@
     </ion-card>
 
     <!-- Vue détaillée de l'événement -->
-    <!-- <ion-card *ngFor="evenementSelectionne, let i = index">
-      <ion-card-header>
-        <ion-card-title>{{ evenementSelectionne.nomEvenement }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>
-          Date de l'événement : {{ evenementSelectionne.datedebut | date :
-          'dd/MM/yyyy' }}
-        </p>
-        <p>Budget total: {{ Tableau[i] }}</p>
-        <p>Description : {{ evenementSelectionne.description }}</p>
-        <p>Lieu : {{ evenementSelectionne.lieu }}</p>
-        <p>Type : {{ evenementSelectionne.typeEvenement }}</p> -->
-        <!-- Ajouter plus d'informations sur l'événement ici -->
-      <!-- </ion-card-content>
-      <table>
-        <thead style="text-align: center; margin: 2%">
-          <th>Libelle</th>
-          <th>Prix unitaire</th>
-          <th>Quantite</th>
-          <th>Montant</th>
-        </thead>
-        <tbody style="text-align: center">
-          <tr *ngFor="let budget of evenementSelectionne.budgets">
-            <td>{{ budget.libelle }}</td>
-            <td>{{ budget.prixUnitaire }}</td>
-            <td>{{ budget.quantite }}</td>
-            <td>{{ budget.prixUnitaire * budget.quantite }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </ion-card> -->
 
-    <!-- <ion-card class="row" *ngFor="let tout of all">
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem">
-          <img
-            src="{{tout.image}}"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="ion-text-center"  class="o">{{tout.nomEvenement}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted"> {{tout.date | date : 'dd/MM/yyyy'}}</h6>
-            <p class="card-text">
-              {{tout.description}}
-            </p>
-
-
-            <div class="ion-text-center">
-              <ion-button> Voir-plus</ion-button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-    </ion-card> -->
   </div>
 </ion-content>

@@ -9,10 +9,10 @@ const routes: Routes = [
     component: EventsPage
   }
   ,
-  {
-    path: 'tache',
-    loadChildren: () => import('../tache/tache.module').then( m => m.TachePageModule)
-  },
+  // {
+  //   path: 'tache',
+  //   loadChildren: () => import('../tache/tache.module').then( m => m.TachePageModule)
+  // },
 
 ];
 

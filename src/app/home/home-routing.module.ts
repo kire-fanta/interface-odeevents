@@ -7,11 +7,11 @@ const routes: Routes = [
     path: '',
     component: HomePage,
   },
-  {
-    path: 'accueil',
-    loadChildren: () =>
-      import('../accueil/accueil.module').then((m) => m.AccueilPageModule),
-  },
+  // {
+  //   path: 'accueil',
+  //   loadChildren: () =>
+  //     import('../accueil/accueil.module').then((m) => m.AccueilPageModule),
+  // },
 ];
 
 @NgModule({

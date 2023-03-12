@@ -1,56 +1,14 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>Détails budgétaires de l'événement</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <div class="table-responsive" style="margin-top: 10vh">
-      <table>
-        <thead
-          style="
-            font-size: 1em;
-            background-color: #ff6600;
-            font-size: 0.8em !important;
-          "
-        >
-          <th class="col-4">Libelle</th>
-          <th class="col-3">Prix unitaire</th>
-          <th class="col-2">Quantite</th>
-          <th class="col-3">Montant</th>
-        </thead>
-
-        <style>
-          th {
-            font-size: 1em;
-          }
-        </style>
-   
-
-        <tbody style="text-align: center; font-size: 0.8em">
-          <tr *ngFor="let budget of budgetsUn">
-            <td class="col-4">{{budget.libelle}}</td>
-            <td class="col-3">{{budget.prixUnitaire}}</td>
-            <td class="col-2">{{budget.quantite}}</td>
-            <td class="col-3">{{budget.prixUnitaire * budget.quantite}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <h4 style="font-size: 1.5em;  width: 100%">
-       <b> Budget Total: <span style="color: #ff6600;">{{monTotal}}</span></b>
-      </h4>
-    </div>
-  </ion-list>
-</ion-content> -->
-
 <ion-header>
   <ion-toolbar>
-    <ion-title>Détails budgétaires de l'événement</ion-title>
+    <h4>Détails budgétaires de l'événement</h4>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-button (click)="ajouterBudget()"> AJouter un Budget</ion-button>
   <ion-list>
     <div class="table-responsive" style="margin-top: 10vh">
       <table>
@@ -72,7 +30,7 @@
             font-size: 1em;
           }
           tr:hover {
-            background-color: #D9D9D9;
+            background-color: #d9d9d9;
             transition: background-color 0.5s ease-out;
           }
         </style>

@@ -4,6 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
@@ -32,11 +37,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./motpasse/motpasse.module').then((m) => m.MotpassePageModule),
   },
-  {
-    path: 'ebudget',
-    loadChildren: () =>
-      import('./ebudget/ebudget.module').then((m) => m.EbudgetPageModule),
-  },
+
   {
     path: 'event-details/:id',
     loadChildren: () =>
@@ -46,16 +47,29 @@ const routes: Routes = [
   },
   {
     path: 'sal',
-    loadChildren: () => import('./sal/sal.module').then( m => m.SalPageModule)
+    loadChildren: () => import('./sal/sal.module').then((m) => m.SalPageModule),
   },
   {
-    path:'events',
-    loadChildren: () => import('./events/events.module').then( (m) => m.EventsPageModule)
+    path: 'salle',
+    loadChildren: () =>
+      import('./salle/salle.module').then((m) => m.SallePageModule),
+  },
+  {
+    path: 'events',
+    loadChildren: () =>
+      import('./events/events.module').then((m) => m.EventsPageModule),
   },
   {
     path: 'evenement-detail/:id',
-    loadChildren: () => import('./evenement-detail/evenement-detail.module').then( m => m.EvenementDetailPageModule)
-  }
+    loadChildren: () =>
+      import('./evenement-detail/evenement-detail.module').then(
+        (m) => m.EvenementDetailPageModule
+      ),
+  },
+  // {
+  //   path: 'notif',
+  //   loadChildren: () => import('./notif/notif.module').then( m => m.NotifPageModule)
+  // },
 ];
 @NgModule({
   imports: [

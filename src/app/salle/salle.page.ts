@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { SalPage } from '../sal/sal.page';
@@ -11,69 +12,71 @@ import { SallesService } from '../Service/salles.service';
 })
 export class SallePage implements OnInit {
   mesSalles: any;
+  salle: any;
   constructor(
     private salleservices: SallesService,
-    private pvrCtlr: PopoverController
+    private pvrCtlr: PopoverController,
+    private router: Router
   ) {}
   async opennotif() {
     let popup = await this.pvrCtlr.create({
       component: SalPage,
       cssClass: 'popover-content',
-      
+
       // buttons:[{
       //   role:"cancel",
       //   icon:"close",
       // }]
-
-      
+    });
+    popup.onDidDismiss().then(()=>{
+      this.toutesLesSalles()
     })
     popup.present();
+    return await popup.onDidDismiss();
   }
 
   ngOnInit() {
-    this.salleservices.getSalles().subscribe((data) => {
-      this.mesSalles = data;
+   this.toutesLesSalles();
+  }
+toutesLesSalles(){
+   this.salleservices.getSalles().subscribe((data) => {
+     this.mesSalles = data;
+   });
+}
+
+supprimer(id: number) {
+    Swal.fire({
+      position: 'center',
+      title: 'Voulez-vous supprimer ?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Oui',
+      denyButtonText: 'non',
+      icon: 'warning',
+      denyButtonColor: 'red',
+      // cancelButtonText: 'Annuler',
+      cancelButtonColor: 'red',
+      confirmButtonColor: 'green',
+      heightAuto: false,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        //Swal.fire('Saved!', '', 'success');
+        this.salleservices.deletesall(id).subscribe((data) => {
+          this.salle = data;
+          console.log(data);
+             this.toutesLesSalles();
+
+        });
+
+      } else if (result.isDenied) {
+        
+      }
     });
   }
 
-  //methode pour supprrimer une salle
-  supprimer(id: number){
-      this.salleservices.deletesall(id).subscribe(data =>{
-        Swal.fire({
-          // title: 'Are you sure?',
-          text: 'Voulez-vous supprimer cette salle  ?',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Oui',
-          cancelButtonText: 'Non', // ajout du bouton "Non"
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire('Votre salle  a été supprimé avec success');
-          }
-        });
-          location.reload();
-      })
-  }
+
   
 }
 
-// import { NavController } from '@ionic/angular';
 
-// @Component({
-//   selector: 'app-salle',
-//   templateUrl: './salle.page.html',
-//   styleUrls: ['./salle.page.scss'],
-// })
-// export class SallePage implements OnInit {
-//   constructor(private navCtrl: NavController) {}
-
-//   ngOnInit() {}
-// }
-// export class SallePage implements OnInit {
-//   salles: Salle[];
-//   constructor(private navCtrl: NavController) {}
-
-//   ngOnInit() {}
-// }

@@ -3,11 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>changepassword</ion-title>
+    <h5>Modification du Mot de passe </h5>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="container" style="margin-right: auto;">
+  <div class="container" style="margin-right: auto;margin-left: auto">
     <!-- <div class="title"><img src="assets/changepassword.gif" alt="passwordchange-gif"></div> -->
     <form #changePasswordForm="ngForm" >
       <!-- <input type="hidden" class="form-control" name="username" placeholder="username" ngModel="{{ username }}"
@@ -54,9 +54,12 @@
 
           />
         </div>
+
+        <ion-button (click)="ModifierMotdepasse()" class="b"> Enregistrer   </ion-button>
+  
+
       </div>
-      <button (click)="ModifierMotdepasse()"
->Enregistrer</button>
+      
     </form>
     <div></div>
   </div>

@@ -1,87 +1,149 @@
-<ion-header>
+<ion-header style="margin-top: 20vh">
+    
   <ion-toolbar>
-    <ion-title>Paramètres de l'organisation</ion-title>
+    <h4>Paramètres de l'organisation</h4>
+
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="ion-text-center">
-    <ion-icon name="people" class="icon"></ion-icon>
-  </div>
-  <ion-card class="ion-margin-top">
-    <ion-card-header>
-      <p>
-        Vous pouvez créer des tâches personnalisées et les assigner à d'autres
-        membres de l'équipe, améliorer la collaboration au sein de l'entreprise.
-      </p>
-    </ion-card-header>
+  <div class="container">
+    <div class="ion-text-center">
+      <ion-icon name="people" class="icon"></ion-icon>
+    </div>
+    <ion-card class="ion-margin-top">
+      <ion-card-header>
+        <p>
+          Vous pouvez créer des tâches personnalisées et les assigner à d'autres
+          membres de l'équipe, améliorer la collaboration au sein de
+          l'entreprise.
+        </p>
+      </ion-card-header>
 
-    <ion-card-content>
-      <!-- <ion-item>
+      <ion-card-content>
+        <!-- <ion-item>
         <ion-label position="floating">Adresse email</ion-label>
         <ion-input type="email"></ion-input>
       </ion-item> -->
 
-      <form
-        #form="ngForm"
-        (ngSubmit)="envoyertache()"
-        style="margin-bottom: 50vh"
-      >
-        <!-- <ion-label>Adresse Email</ion-label> -->
-        <ion-item position="floating">Adresse Email</ion-item>
+        <form
+          #f="ngForm"
+          name="form"
+          (ngSubmit)=" f.form.valid && envoyertache()"
+          style="margin-bottom: 50vh"
+        >
+          <!-- <ion-label>Adresse Email</ion-label> -->
+          <ion-item position="floating">
+            <ion-select
+              placeholder="Assigner la tache"
+              multiple="true"
+              name="selectedOptions"
+              [(ngModel)]="selectedOptions"
+            >
+              <ion-select-option
+                *ngFor="let user of users"
+                [value]="user"
+                required
+                name="selectedOptions"
+              >
+                {{user.email}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
 
-        <ion-select>
-          <ion-select-option *ngFor="let user of users">
-            <ion-list>
-              <ion-item>
-                <ion-label>{{user.email}}</ion-label>
-                <ion-checkbox
-                  slot="start"
-                  [(ngModel)]="user.isChecked"
-                ></ion-checkbox>
-              </ion-item>
-            </ion-list>
-          </ion-select-option>
+          <!-- <ion-item position="floating">Evenement</ion-item> -->
+          <ion-item>
+            <ion-select
+              placeholder="Evenement"
+              name="id_evenement"
+              [(ngModel)]="form.id_evenement"
+            >
+              <ion-select-option
+                *ngFor="let tout of all"
+                name="id_evenement"
+                [value]="tout"
+                required
+                >{{tout.nomEvenement}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
 
-          <!-- <ion-select name="type" [(ngModel)]="Adresseemail" required>
-        <ion-select-option value="conférence" *ngFor="let user of users" >{{user.email}}</ion-select-option>
-      </ion-select> -->
-          <!-- </ion-item> -->
-        </ion-select>
-        <ion-item>
-          <ion-label position="floating">Nom de la tâche</ion-label>
-          <ion-input type="text" [(ngModel)]="tache" required></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label
+              position="floating"
+              style="font-weight: 100; color: #707070"
+              >Nom de la tâche</ion-label
+            >
+            <ion-input
+              type="text"
+              [(ngModel)]="form.tache"
+              name="tache"
+              required
+            ></ion-input>
+          </ion-item>
 
-        <!-- <ion-item>
+          <!-- <ion-item>
         <ion-label position="floating">Date d'échéance</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
       </ion-item> -->
-        <ion-item>
-          <ion-label position="floating">Date d'échéance</ion-label>
+           
+      <div class="div">
+           <label for="" >Date d'echeance</label>
 
-          <ion-input
-            type="date"
-            [(ngModel)]="datedecheance"
-            name="datedebut"
-          ></ion-input>
-        </ion-item>
+            <ion-input
+              type="date"
+              [(ngModel)]="form.datedecheance"
+              name="datedebut"
+              required
+            ></ion-input>
+          </div>
 
-        <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea
-            name="description"
-            [(ngModel)]="description"
-          ></ion-textarea>
+          <ion-item>
+            <ion-select
+              placeholder="Choisir un status"
+              name="idStatus"
+              [(ngModel)]="form.idStatus"
+              required
+            >
+              <ion-select-option
+                *ngFor="let status of mesStatus"
+                name="idStatus"
+                [value]="status"
+                required
+                >{{status.status}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
 
-          <ion-textarea rows="4"></ion-textarea>
-        </ion-item>
+          <ion-item style="border: 1px solid #f7dada">
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea
+              name="description"
+              [(ngModel)]="form.description"
+              required
+            ></ion-textarea>
 
-        <ion-item>
-          <ion-button type="submit" [disabled]="form.invalid" expand="block">
+          </ion-item>
+
+        
+
+          <ion-button
+            type="submit"
+            [disabled]="form.invalid"
+            expand="block"
+            *ngIf="f.form.valid"
+          >
             Envoyer</ion-button
           >
-        </ion-item>
-      </form>
-    </ion-card-content>
-  </ion-card></ion-content
->
+          <ion-button
+            type="submit"
+            disabled
+            expand="block"
+            *ngIf="!f.form.valid"
+          >
+            Envoyer</ion-button
+          >
+        </form> </ion-card-content
+      >*
+    </ion-card>
+  </div>
+</ion-content>

@@ -15,6 +15,11 @@
 // }
 .o{
   color: #ff6600;
+  text-align: center;
+}
+.bold{
+  font-weight: bold;
+  text-align: center;
 }
 ion-segment-button {
   --color: black;
@@ -42,7 +47,7 @@ ion-segment-button {
   margin-right: auto;
 }
 .u {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   color: #000000;
 }

@@ -1,18 +1,4 @@
-// import { Component, OnInit } from '@angular/core';
 
-// @Component({
-//   selector: 'app-budget',
-//   templateUrl: './budget.page.html',
-//   styleUrls: ['./budget.page.scss'],
-// })
-// export class BudgetPage implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 import { Component, OnInit } from '@angular/core';
 // import { BudgetService } from '../Service/budget.service';
 import { Router } from '@angular/router';
@@ -109,15 +95,5 @@ export class BudgetPage implements OnInit {
     });
   }
 
-  // les budgets pqr id
-
-  // getEventById(idbudget:any){
-  //   this.evenetService.getbudgetbyevent(idbudget).subscribe(data=>{
-  //     for(let m of data){
-  //       this.mont += m.prixUnitaire * m.quantite;
-
-  //     }
-  //     console.log('Ev3 ' + this.mont);
-  //   })
-  // }
+ 
 }

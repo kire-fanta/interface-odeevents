@@ -1,128 +1,21 @@
-<!-- 
-<ion-header>
-  <ion-toolbar>
-    <div class="image">
-      <img src="../assets/IMAGE/ok.png" alt="" />
-    </div>
-  </ion-toolbar>
-</ion-header>
-
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Créer un événement</ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
-  <form>
-    <ion-item>
-      <ion-label position="floating">Nom de l'événement</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+  <ion-header style="margin-top: 20vh">
+    <!-- <button (click)="back()">
+    <ion-icon name="arrow-back"></ion-icon>
+  </button> -->
 
-    <ion-item>
-      <ion-label position="floating">Organisateurs</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <ion-toolbar>
+      <h4>Création de l'évenement</h4>
+      <ion-buttons slot="start">
+        <ion-back-button text="" icon="arrow-back"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-    <ion-item>
-      <ion-label position="floating">Type</ion-label>
-      <ion-select>
-        <ion-select-option value="conférence">Conférence</ion-select-option>
-        <ion-select-option value="festival">Festival</ion-select-option>
-        <ion-select-option value="exposition">Exposition</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Date de début</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Date de fin</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Heure de début</ion-label>
-      <ion-input type="time"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Heure de fin</ion-label>
-      <ion-input type="time"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Lieu</ion-label>
-      <ion-select [(ngModel)]="location">
-        <ion-select-option value="inside" (onselect)="location='inside'"
-          >Au siège</ion-select-option
-        >
-        <ion-select-option value="outside" (onselect)="location='outside'"
-          >A l'extérieur</ion-select-option
-        >
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-radio-group [(ngModel)]="location">
-        <ion-item>
-          <ion-label>Au siège</ion-label>
-          <ion-radio value="inside" (click)="location='inside'"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>A l'extérieur</ion-label>
-          <ion-radio value="outside" (click)="location='outside'"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-item>
-
-
-    <ion-item *ngIf="location === 'inside'">
-      <ion-label position="floating">Salle</ion-label>
-      <ion-select (ionChange)="onRoomChange($event)">
-        <ion-select-option *ngFor="let room of rooms" [value]="room"
-          >{{room}}</ion-select-option
-        >
-      </ion-select>
-    </ion-item>
-
-    <ion-item *ngIf="location === 'outside'">
-      <ion-label position="floating">Géolocalisation</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Description</ion-label>
-      <ion-textarea rows="4"></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Image</ion-label>
-      <ion-input type="file"></ion-input>
-    </ion-item>
-    <ion-button (click)="openModal()"> Continuer </ion-button>
-  </form></ion-content
-> -->
-
-<ion-header>
-  <ion-toolbar>
-    <div class="image">
-      <img src="../assets/IMAGE/ok.png" alt="" />
-    </div>
-  </ion-toolbar>
-</ion-header>
-
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Créer un événement</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
   <form
     #form="ngForm"
     (ngSubmit)="ajouterEvenement()"
-    style="margin-bottom: 50vh"
+    style="margin-bottom: 5vh"
   >
     <ion-item>
       <ion-label position="floating">Nom de l'événement</ion-label>
@@ -147,36 +40,6 @@
       </ion-select>
     </ion-item>
 
-    <!-- <ion-item>
-      <ion-label position="floating">Statut</ion-label>
-      <ion-select name="type" [(ngModel)]="type" required>
-        <ion-select-option value="conférence" *ngFor="let s of status">
-          {{s.status}}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime
-        displayFormat="DD/MM/YYYY"
-        name="date"
-        [(ngModel)]="date"
-        required
-      ></ion-datetime>
-    </ion-item> -->
-
-    <!-- 
-    <ion-item>
-      <ion-label>Heure de début</ion-label>
-      <ion-time
-        displayFormat="hh:mm A"
-        name="heureDebut"
-        [(ngModel)]="heureDebut"
-        required
-        
-      ></ion-time>
-    </ion-item> -->
-
     <ion-item>
       <ion-label position="floating">Heure de début</ion-label>
 
@@ -192,7 +55,7 @@
       <ion-input type="time" [(ngModel)]="heureFin" name="heureFin"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Date debut</ion-label>
+      <ion-label position="">Date debut:</ion-label>
 
       <ion-input
         type="date"
@@ -201,23 +64,10 @@
       ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Date fin</ion-label>
+      <ion-label position="">Date fin: </ion-label>
 
       <ion-input type="date" [(ngModel)]="datefin" name="datefin"></ion-input>
     </ion-item>
-
-    <!-- <ion-item>
-      <ion-label>Heure de fin</ion-label>
-      <ion-datetime
-        displayFormat="hh:mm A"
-        name="heureFin"
-        [(ngModel)]="heureFin"
-        required
-      >
-    </ion-datetime> 
-
-
-    </ion-item>-->
 
     <ion-item>
       <ion-label position="floating">Description</ion-label>
@@ -227,11 +77,7 @@
     <ion-item>
       <ion-label>Lieu</ion-label>
       <ion-select [(ngModel)]="location" (ionChange)="onLocationChange($event)">
-        <ion-select-option
-          value="inside"
-          
-          >Au siège</ion-select-option
-        >
+        <ion-select-option value="inside">Au siège</ion-select-option>
         <ion-select-option
           value="outside"
           (ionSelect)="onLocationChange('outside')"
@@ -239,44 +85,30 @@
         >
       </ion-select>
     </ion-item>
-     
+
     <ion-item *ngIf="location1 === 'inside'">
       <ion-label position="floating">Salle</ion-label>
       <ion-select (ionChange)="onRoomChange($event)">
-        <ion-select-option *ngFor="let salle of mesSalles" value="{{salle.libelle}}"
+        <ion-select-option
+          *ngFor="let salle of mesSalles"
+          value="{{salle.libelle}}"
           >{{salle.libelle}}
         </ion-select-option>
       </ion-select>
     </ion-item>
 
-    <!-- 
-    <ion-item *ngIf="location === 'outside'">
-      <ion-label position="floating">Géolocalisation</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item> -->
     <ion-item *ngIf="location1 === 'outside'">
       <ion-label position="floating">Adresse</ion-label>
       <ion-input type="text" name="location" [(ngModel)]="location"></ion-input>
-      <!-- <ion-button (click)="location='outside'">Ajouter</ion-button> -->
     </ion-item>
-    <!-- test -->
-    <!-- <ion-item *ngIf="location === 'inside'">
-      <ion-label position="floating">Salle</ion-label>
-      <ion-select (ionChange)="onRoomChange($event)">
-        <ion-select-option *ngFor="let room of rooms" [value]="room"
-          >{{room}}</ion-select-option
-        >
-      </ion-select>
-    </ion-item> -->
 
     <ion-item *ngIf="location === 'outside'">
       <ion-label position="floating">Géolocalisation</ion-label>
-      <ion-input type="text"></ion-input> </ion-item
-    >
-    <!-- test -->
+      <ion-input type="text"></ion-input>
+    </ion-item>
 
     <ion-item>
-      <ion-label for="image" position="floating">Image</ion-label>
+      <ion-label for="image" position="">Image: </ion-label>
       <ion-input
         type="file"
         id="files"

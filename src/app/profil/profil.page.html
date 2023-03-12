@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <h4>profile</h4>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button text="" icon="arrow-back"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -9,7 +14,7 @@
     (ngSubmit)="onSubmit()"
     enctype="multipart/form-data"
   >
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row class="ion-justify-content-center marge">
         <div class="form-group">
           <ion-avatar class="avtar">
@@ -31,7 +36,7 @@
           </ion-avatar>
         </div>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
     <div class="container">
       <div class="user-details">
         <div class="form-group">

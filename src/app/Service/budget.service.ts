@@ -12,7 +12,7 @@ export class BudgetService {
     throw new Error('Method not implemented.');
   }
 
-  private baseUrl = 'http://localhost:8080/previsions-depenses/add/';
+  private baseUrl = 'http://localhost:8080/previsions-depenses/add';
 
   constructor(private http: HttpClient) {}
 
@@ -22,8 +22,8 @@ export class BudgetService {
     );
   }
 
-  gererPrevision(prevision: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/gerer`, prevision);
+  gererPrevision(prevision: any,id:any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/${id}`, prevision);
   }
 
   getAllPrevisions(): Observable<any> {

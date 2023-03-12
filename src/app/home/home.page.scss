@@ -54,7 +54,7 @@ h6 span {
 .checkbox:not(:checked) + label {
   position: relative;
   display: block;
-  
+
   width: 200px;
   height: 16px;
   border-radius: 8px;
@@ -94,7 +94,7 @@ h6 span {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 800px;
-  margin-top: 60px;
+  margin-top: 6px;
 }
 .card-3d-wrapper {
   width: 100%;
@@ -137,7 +137,7 @@ h6 span {
   position: absolute;
   width: 100%;
   padding: 0 35px;
-  top: 50%;
+  top: 30%;
   left: 0;
   transform: translate3d(0, -50%, 35px) perspective(100px);
   z-index: 20;
@@ -274,7 +274,7 @@ h6 span {
 }
 .logo {
   position: absolute;
-  top: 30px;
+  // top: 30px;
   right: 30px;
   display: block;
   z-index: 100;
@@ -287,7 +287,7 @@ img {
   --align-items: center;
   margin-left: 20%;
 
-  margin-top: 30px;
+  // margin-top: 30px;
 }
 span {
   font-size: 14px;

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '@ionic/cli';
+import { User } from '../Model/user';
 import { Observable } from 'rxjs';
 import { TokenstorageService } from '../tokenstorage.service';
 const AUTH_API = 'http://localhost:8080/api/auth/';

@@ -4,4 +4,12 @@ export class User {
   nom: any;
   prenom: any;
   imageprofil!: File;
+  notification!: Notification[]
 }
+export class Notification {
+            id!: number
+            description!: string
+            date!: Date
+            titre!: string
+}
+

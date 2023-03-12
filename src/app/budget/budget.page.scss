@@ -89,6 +89,13 @@ h1 {
   position: relative;
   top: -15px;
 }
+.butonevents {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
 .btn {
   position: relative;
   top: 20px;
@@ -124,12 +131,11 @@ h1 {
 .fa-comments {
   margin-right: 7px;
 }
-.icongroup {
-  width: 100px;
-  display: flex;
-  justify-content: space-between;
-  color: #ff6600;
+
+.center {
+  text-align: center;
 }
-ion-icon{
+.o {
   color: #ff6600;
+  text-align: center;
 }

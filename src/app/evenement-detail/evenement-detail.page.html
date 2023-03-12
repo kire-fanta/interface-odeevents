@@ -1,8 +1,10 @@
+
 <ion-header>
   <ion-toolbar>
-    <div class="image">
-      <img src="../assets/IMAGE/ok.png" alt="" />
-    </div>
+    <h4>Details de L'événement</h4>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +16,7 @@
       <ion-card-title class="u">{{ evenementSelectionne.nomEvenement }}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="card">
-      <!-- <p>Date de l'événement : {{ evenementSelectionne.datedebut | date : 'dd/MM/yyyy' }}</p> -->
-      <!-- <p>Budget total:   {{ Tableau[i] }} </p> -->
+
       <h2> <span class="o">Description</span> : {{ evenementSelectionne.description }}</h2>
       <h2 > <span class="o">Lieu </span>: {{ evenementSelectionne.lieu }}</h2>
       <H2> <span class="o">Type</span> : {{ evenementSelectionne.typeEvenement }}</H2>
@@ -31,6 +32,15 @@
         'dd/MM/yyyy'}}
       </h4>
       </div>
+       <!-- <ion-item class="icongroup">
+      <ion-icon name="trash-outline" (click)="supprimer(evenementSelectionne.idEvenement)"></ion-icon>
+      <ion-icon
+        name="create-outline"
+      >
+        </ion-icon
+      >
+      
+    </ion-item> -->
 
       <h1 style="height: 25vh"></h1>
     </ion-card-content>

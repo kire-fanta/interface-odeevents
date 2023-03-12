@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import Swal from 'sweetalert2';
-import { NotifComponent } from '../notif/notif.component';
 import { ModalComponent } from '../organization-settings-modal/modal.component';
 import { EventsService } from '../Service/events.service';
 import { SallesService } from '../Service/salles.service';
@@ -18,7 +17,7 @@ export class EventsPage implements OnInit {
   user: any;
 
   location: string = 'inside';
-  location1:any;
+  location1: any;
   rooms: string[] = ['Salle 1', 'Salle 2', 'Salle 3'];
 
   nom: any;
@@ -42,6 +41,7 @@ export class EventsPage implements OnInit {
   datedebut: any;
   users: any;
   mesSalles: any;
+  Resultat: any;
   constructor(
     private pvrCtlr: PopoverController,
     private eventsservice: EventsService,
@@ -92,12 +92,15 @@ export class EventsPage implements OnInit {
   }
 
   ajouterEvenement() {
-    if(this.location1 == 'outside'){
-      this.lieu = this.location
-    }else{
-      this.lieu = this.location1
+    this.user = this.service.getUser();
+    if (this.location1 == 'outside') {
+      this.lieu = this.location;
+    } else {
+      this.lieu = this.location1;
     }
     console.log('ajouterEvenement');
+    console.log(this.user.id);
+
     this.eventsservice
       .ajouterEvenement(
         this.description,
@@ -117,23 +120,45 @@ export class EventsPage implements OnInit {
       )
 
       .subscribe((data) => {
-        console.log(data);
-        Swal.fire({
-          heightAuto: false,
-          // position: 'top-end',
-          icon: 'success',
-          text: 'Evénement ajouté avec succès',
-          showConfirmButton: false,
-          timer: 2500,
-        });
+        this.Resultat = data;
+
+        if (this.Resultat.message == '') {
+          Swal.fire({
+            heightAuto: false,
+            
+            icon: 'warning',
+            text: 'La date debut ne peut pas etre avant la date de fin',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        } else {
+          Swal.fire({
+            heightAuto: false,
+          
+            icon: 'success',
+            iconColor: '#ff6600',
+            text: 'Evénement ajouté avec succès',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        }
+
+        console.log(this.Resultat.message);
+
+
+        
       });
+
+
+
+
     this.location = 'inside';
 
-    // async openModal() {
-    //   const popup = await this.pvrCtlr.create({
-    //     component: ModalComponent,
-    //   });
-    //   popup.present();
-    // }
+  
+  }
+
+
+  back():void{
+    window.history.back()
   }
 }

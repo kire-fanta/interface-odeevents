@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content style="overflow: hidden">
   <div>
     <!-- <ion-toggle [enableOnOffLabels]="true"></ion-toggle> -->
     <!-- <a href="https://front.codes/"></a> -->
@@ -19,7 +19,7 @@
         <div class="row full-height justify-content-center">
           <div class="col-12 text-center align-self-center py-5">
             <div class="section pb-5 pt-5 pt-sm-2 text-center">
-              <img src="../assets/IMAGE/ok.png" alt="" />
+              <img src="../assets/IMAGE/eventodc.png" alt="" />
               <!-- <label for="toggle-on" class="btn" id="reg-log" name="reg-log"
                 >Connexion</label
               >
@@ -35,9 +35,7 @@
                 style="width: 50%"
               />
 
-              <label for="reg-log" style="color: white"
-                >Connexion &nbsp;&nbsp; Inscription</label
-              >
+              <label for="reg-log" style="color: white"> </label>
               <div class="card-3d-wrap mx-auto">
                 <div class="card-3d-wrapper">
                   <div class="card-front">
@@ -84,116 +82,20 @@
                             <i class="input-icon uil uil-lock-alt"></i>
                           </div>
 
-                          <button type="submit" class="btn mt-4">
+                          <button
+                            type="submit"
+                            class="btn mt-4"
+                            style="width: 100%"
+                          >
                             Envoyer
                           </button>
                         </form>
 
-                        <p class="mb-0 mt-4 text-center">
+                        <!-- <p class="mb-0 mt-4 text-center">
                           <a href="#0" class="link"
                             >Vous avez oublier votre mot de passe ?</a
                           >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card-back">
-                    <div class="center-wrap">
-                      <div class="section text-center">
-                   
-                        <form
-                        
-                          name="form"
-                          (ngSubmit)="f.form.valid && onSubmit1()"
-                          #f="ngForm"
-                          novalidate
-                        >
-                        <h4 class="mb-4 pb-3">Inscription</h4>
-                    
-                        <div class="form-group mt-2">
-                          <input
-                            type="text"
-                            name="nom"
-                            class="form-control"
-                            placeholder="Nom"
-                            [(ngModel)]="form.nom"
-                           required
-                           minlength="3"
-                           maxlength="20"
-                           #nom="ngModel"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-
-                          <div class="form-group mt-2">
-                          <input
-                            type="text"
-                            name="prenom"
-                            class="form-control"
-                            placeholder="Prenom"
-                            [(ngModel)]="form.prenom"
-                           required
-                           minlength="3"
-                           maxlength="20"
-                           #prenom="ngModel"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-
-                        <div class="form-group mt-2">
-                          <input
-                            type="text"
-                            name="username"
-                            class="form-control"
-                            placeholder="Username"
-                             [(ngModel)]="form.username"
-                           required
-                           minlength="3"
-                           maxlength="20"
-                           #username="ngModel"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-
-                        <div class="form-group mt-2">
-                          <input
-                            type="email"
-                            name="email"
-                            class="form-control"
-                            placeholder="Email"
-                             [(ngModel)]="form.email"
-                           required
-                           #email="ngModel"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-
-                        
-                        <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="password"
-                            class="form-control"
-                            placeholder="Mot de Passe"
-                             [(ngModel)]="form.password"
-                           required
-                           minlength="6"
-                           #password="ngModel"
-                            autocomplete="off"
-                          />
-                          <i class="input-icon uil uil-at"></i>
-                        </div>
-
-                        <div>
-                          <button class="btn mt-4" type="submit"> S'inscrire</button>
-                      
-                        </div>
-                      </form>
+                        </p> -->
                       </div>
                     </div>
                   </div>
